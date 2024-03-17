@@ -5,6 +5,7 @@
 > CV Maker uses the libraries
 > - **[React](https://react.dev)**
 > - **[TypeScript](https://typescriptlang.org)**
+> - **[Million.js](https://million.dev)**
 > - **[Zustand](https://docs.pmnd.rs/zustand)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**

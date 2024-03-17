@@ -27,7 +27,7 @@
     "sourceType": "module",
     "project": "tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "no-relative-import-paths", "import", "vitest", "n"],
+  "plugins": ["@typescript-eslint", "no-relative-import-paths", "import", "react", "vitest", "n"],
   "rules": {
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/explicit-member-accessibility": 2,
@@ -40,6 +40,14 @@
     "import/no-useless-path-segments": 2,
     "import/no-default-export": 2,
     "import/group-exports": 2,
+    "react/sort-comp": 2,
+    "react/jsx-pascal-case": 2,
+    "react/prefer-es6-class": 2,
+    "react/jsx-boolean-value": 2,
+    "react/self-closing-comp": 2,
+    "react/prefer-stateless-function": 2,
+    "react/no-multi-comp": [2, { "ignoreStateless": true }],
+    "react/jsx-no-bind": [2, { "allowArrowFunctions": true }],
     "jest/no-deprecated-functions": 0,
     "vitest/no-test-return-statement": 2,
     "vitest/consistent-test-filename": 2,

@@ -1,7 +1,7 @@
 {
   "name": "cv-maker",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "keywords": [
     "resume builder",
@@ -39,6 +39,7 @@
     "experimentalTernaries": true
   },
   "dependencies": {
+    "million": "^3.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stylus": "^0.63.0",

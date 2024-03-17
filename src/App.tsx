@@ -1,7 +1,7 @@
-import { type JSX } from 'react';
-import '@/app.styl';
+import { type ReactElement } from 'react';
+import '@/App.styl';
 
-export const App = (): JSX.Element => {
+export const App = (): ReactElement => {
   return <>Hello World!</>;
 };
 

@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import { vite } from 'million/compiler';
+import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config
@@ -7,6 +8,7 @@ export default defineConfig({
   base: '/cv-maker/',
   plugins: [
     react(),
+    vite({ auto: true }),
     VitePWA({
       srcDir: 'src',
       filename: 'sw.ts',
