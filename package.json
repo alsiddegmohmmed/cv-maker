@@ -1,0 +1,79 @@
+{
+  "name": "cv-maker",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "keywords": [
+    "resume builder",
+    "cv maker"
+  ],
+  "description": "A Resume Builder",
+  "repository": "github:eldarlrd/cv-maker",
+  "homepage": "https://eldarlrd.github.io/cv-maker",
+  "author": "Eldar Pashazade <eldarlrd@pm.me> (https://eldarlrd.github.io)",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "cover": "vitest run --coverage",
+    "deployer": "pnpm build && gh-pages -b prod -m 'build(prod): deployment' -d dist",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
+    "style": "stylelint 'src/**/*.{css,pcss,scss,sass,less,styl}'",
+    "pretty": "prettier '{src,__{tests,mocks,snapshots}__}/**/*.{ts,tsx}' --write",
+    "format": "pnpm lint --fix && pnpm style --fix && pnpm pretty"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-stylus/standard"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "bracketSameLine": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "experimentalTernaries": true
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stylus": "^0.63.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-no-relative-import-paths": "^1.5.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "eslint-plugin-vitest": "^0.3.26",
+    "gh-pages": "^6.1.1",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-stylus": "^1.0.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vite-plugin-pwa": "^0.19.4",
+    "vitest": "^1.4.0",
+    "workbox-core": "^7.0.0",
+    "workbox-precaching": "^7.0.0"
+  }
+}
