@@ -1,4 +1,5 @@
 import { type ReactElement } from 'react';
+import 'modern-normalize';
 import '@/App.styl';
 
 export const App = (): ReactElement => {

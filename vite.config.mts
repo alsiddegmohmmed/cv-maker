@@ -6,6 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config
 export default defineConfig({
   base: '/cv-maker/',
+  resolve: { alias: { '@': '/src' } },
   plugins: [
     react(),
     vite({ auto: true }),
@@ -21,7 +22,6 @@ export default defineConfig({
       }
     })
   ],
-  resolve: { alias: { '@': '/src' } },
   // https://vitest.dev/config
   test: {
     globals: true,

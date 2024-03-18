@@ -3,11 +3,12 @@
 [![License](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/eldarlrd/cv-maker/main/package.json&query=license&logo=open-source-initiative&logoColor=fff&label=license&labelColor=475569&color=c026d3)](https://github.com/eldarlrd/cv-maker/blob/main/LICENSE)
 
 > CV Maker uses the libraries
-> - **[React](https://react.dev)**
 > - **[TypeScript](https://typescriptlang.org)**
+> - **[React](https://react.dev)**
 > - **[Million.js](https://million.dev)**
 > - **[Zustand](https://docs.pmnd.rs/zustand)**
 > - **[Stylus](https://stylus-lang.com)**
+> - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
 > - **[Vitest](https://vitest.dev)**
 > - **[Vite](https://vitejs.dev)**
