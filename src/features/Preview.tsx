@@ -1,3 +1,9 @@
 import { type ReactElement } from 'react';
 
-export const Preview = (): ReactElement => <></>;
+import { Personal } from '@/components/preview/Personal.tsx';
+
+export const Preview = (): ReactElement => (
+  <main>
+    <Personal />
+  </main>
+);

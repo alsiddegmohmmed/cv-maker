@@ -9,6 +9,7 @@
 > - **[Zustand](https://docs.pmnd.rs/zustand)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
+> - **[Font Awesome](https://fontawesome.com)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
 > - **[Vitest](https://vitest.dev)**
 > - **[Vite](https://vitejs.dev)**
