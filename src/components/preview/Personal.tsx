@@ -29,12 +29,12 @@ export const Personal = (): ReactElement => {
 
       <h4>
         {Object.entries(PERSONAL_DETAILS.links).map(([key, value], index) => (
-          <>
+          <span key={key}>
             <a title={value} href={value} rel='noopener noreferrer nofollow'>
               {key}
             </a>
             {index < Object.entries(PERSONAL_DETAILS.links).length - 1 && ' | '}
-          </>
+          </span>
         ))}
       </h4>
       <hr />
