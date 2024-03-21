@@ -1,2 +1,23 @@
+radius = 0.5rem
+fg-main = #1e293b // tw-slate-800
+bg-main = #f1f5f9 // tw-slate-100
+bg-field = #f8fafc // tw-slate-50
+fg-tap = #1e293b80
+bg-tap = #f1f5f980
+font-main = 'Geist Variable'
+transition = 150ms cubic-bezier(0.4, 0, 0.2, 1)
+
 :root
-  color black
+  color fg-main
+  min-height 100%
+  background bg-main
+  accent-color fg-main
+  scroll-behavior smooth
+  font-family font-main, sans-serif
+
+::selection
+  color bg-main
+  background fg-main
+
+// stylelint-disable-next-line import-notation, no-invalid-position-at-import-rule
+@import 'styles/**/*.styl'

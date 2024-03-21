@@ -1,13 +1,16 @@
 import { type ReactElement } from 'react';
-
 import 'modern-normalize';
 import '@/App.styl';
+import 'non.geist';
+
 import { Footer } from '@/components/banners/Footer.tsx';
-import { Editor } from '@/features/Editor.tsx';
+import { Header } from '@/components/banners/Header.tsx';
+import { Preview } from '@/features/Preview.tsx';
 
 export const App = (): ReactElement => (
   <>
-    <Editor />
+    <Header />
+    <Preview />
     <Footer />
   </>
 );

@@ -11,8 +11,8 @@
   ],
   "display": "fullscreen",
   "orientation": "natural",
-  "theme_color": "#fff",
-  "background_color": "#fff",
+  "theme_color": "#1e293b",
+  "background_color": "#f1f5f9",
   "description": "A Resume Builder",
   "start_url": "https://eldarlrd.github.io/cv-maker/",
   "icons": [
