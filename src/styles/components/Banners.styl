@@ -1,0 +1,37 @@
+header
+footer
+  margin 1rem
+  user-select none
+  text-align center
+  font-size 1.25rem
+
+  a
+    color inherit
+    position relative
+    border-radius radius
+    text-decoration none
+    vertical-align middle
+    padding-bottom 0.125rem
+    -webkit-tap-highlight-color bg-tap
+
+    &:focus-visible
+      outline 0.125rem solid fg-main
+
+    &::before
+      left 0
+      width 100%
+      content ''
+      display block
+      height 0.125rem
+      bottom -0.25rem
+      position absolute
+      background fg-main
+      transform scaleX(0)
+      border-radius radius
+      transform-origin bottom right
+      transition transform transition
+
+    @media (hover hover)
+      &:hover::before
+        transform scaleX(1)
+        transform-origin bottom left

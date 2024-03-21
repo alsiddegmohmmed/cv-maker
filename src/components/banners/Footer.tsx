@@ -9,10 +9,9 @@ export const Footer = (): ReactElement => (
       title='Source'
       target='_blank'
       type='text/html'
-      className='external'
-      href='https://github.com/eldarlrd/cv-maker'
-      rel='noopener noreferrer nofollow external author'>
-      <FontAwesomeIcon icon={faGithub} /> eldarlrd
+      rel='author external noreferrer'
+      href='https://github.com/eldarlrd/cv-maker'>
+      <FontAwesomeIcon size='sm' icon={faGithub} /> eldarlrd
     </a>
   </footer>
 );
