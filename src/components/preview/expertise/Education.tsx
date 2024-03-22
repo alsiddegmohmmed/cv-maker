@@ -21,7 +21,7 @@ export const Education = (): ReactElement => {
 
   return (
     <div id='education'>
-      <h1>Education</h1>
+      <h1>EDUCATION</h1>
 
       {COLLEGES.map((college, index) => (
         <div key={index}>

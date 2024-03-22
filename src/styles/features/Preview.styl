@@ -2,8 +2,23 @@ main
   margin auto
   height 70rem
   color black
+  overflow-y auto
   max-width 95svw
   width 49.625rem
   background white
   box-shadow shadow-main
   padding 1.4375rem 2.9375rem
+
+  a
+    color inherit
+    text-decoration none
+    border-radius radius
+    -webkit-tap-highlight-color bg-tap
+
+    &:focus-visible
+      outline 0.125rem solid fg-main
+
+    @media (hover hover)
+      &:hover
+        background link
+        box-shadow shadow-link

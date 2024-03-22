@@ -30,7 +30,7 @@ export const Skills = (): ReactElement => {
 
   return (
     <div id='skills'>
-      <h1>Skills</h1>
+      <h1>SKILLS</h1>
 
       {Object.entries(SKILLSETS).map(([key, values]) => (
         <div key={key}>
