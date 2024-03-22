@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react';
 
-export const Skills = (): ReactElement => {
-  const SKILLSETS = {
+export const Projects = (): ReactElement => {
+  const PROJECT_LIST = {
     'Programming Languages': [
       'HTML',
       'CSS',
@@ -29,22 +29,8 @@ export const Skills = (): ReactElement => {
   };
 
   return (
-    <div id='skills'>
-      <h1>Skills</h1>
-
-      {Object.entries(SKILLSETS).map(([key, values]) => (
-        <div key={key}>
-          <h2>{key}</h2>
-          <p>
-            {values.map((value, index) => (
-              <span key={value}>
-                {value}
-                {index !== values.length - 1 && ', '}
-              </span>
-            ))}
-          </p>
-        </div>
-      ))}
+    <div id='projects'>
+      <h1>Projects</h1>
     </div>
   );
 };

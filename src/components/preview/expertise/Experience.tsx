@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { type ReactElement } from 'react';
 
 export const Experience = (): ReactElement => {
@@ -6,8 +7,8 @@ export const Experience = (): ReactElement => {
       company: 'AI Solutions',
       position: 'Front End Developer',
       location: 'Baku, Azerbaijan',
-      startDate: 'Jan 2023',
-      endDate: 'Jun 2023',
+      startDate: DateTime.fromISO('2023-01'),
+      endDate: DateTime.fromISO('2023-06'),
       descriptions: [
         'Developed the interface of the cross-platform smart home mobile app "BHouse" using React Native and TypeScript.',
         'Integrated the client-side app with the .Net Back End using Redux Toolkit Query.'
@@ -17,8 +18,8 @@ export const Experience = (): ReactElement => {
       company: 'Pasha Bank',
       position: 'Front End Intern',
       location: 'Baku, Azerbaijan',
-      startDate: 'Aug 2022',
-      endDate: 'Dec 2022',
+      startDate: DateTime.fromISO('2022-08'),
+      endDate: DateTime.fromISO('2022-12'),
       descriptions: ['A Front End Intern at Pasha Bank, React and TypeScript.']
     }
   ];
@@ -34,7 +35,10 @@ export const Experience = (): ReactElement => {
               {workplace.company} | {workplace.position}
             </h2>
             <h3>
-              {workplace.location} | {workplace.startDate} - {workplace.endDate}
+              {workplace.location} | {workplace.startDate.toFormat('MMM y')} -{' '}
+              {workplace.endDate.year ?
+                workplace.endDate.toFormat('MMM y')
+              : 'Present'}
             </h3>
           </span>
 

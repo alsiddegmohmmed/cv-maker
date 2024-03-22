@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { type ReactElement } from 'react';
 
 export const Education = (): ReactElement => {
@@ -6,15 +7,15 @@ export const Education = (): ReactElement => {
       name: 'Azerbaijan State Oil and Industry University',
       major: 'Artificial Intelligence',
       degree: "Master's",
-      startYear: '2022',
-      endYear: ''
+      startYear: DateTime.fromISO('2022'),
+      endYear: DateTime.fromISO('')
     },
     {
       name: 'Azerbaijan State Oil and Industry University',
       major: 'Computer Engineering',
       degree: "Bachelor's",
-      startYear: '2018',
-      endYear: '2022'
+      startYear: DateTime.fromISO('2018'),
+      endYear: DateTime.fromISO('2022')
     }
   ];
 
@@ -27,8 +28,7 @@ export const Education = (): ReactElement => {
           <span>
             <h2>{college.name}</h2>
             <h3>
-              {college.startYear} -{' '}
-              {college.endYear ? college.endYear : 'Present'}
+              {college.startYear.year} - {college.endYear.year || 'Present'}
             </h3>
           </span>
 
