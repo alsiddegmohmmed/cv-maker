@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-export const Skills = (): ReactElement => {
+export const PreviewSkills = (): ReactElement => {
   const SKILLSETS = {
     'Programming Languages': [
       'HTML',

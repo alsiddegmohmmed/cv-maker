@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { type ReactElement } from 'react';
 
-export const Education = (): ReactElement => {
+export const PreviewEducation = (): ReactElement => {
   const COLLEGES = [
     {
       name: 'Azerbaijan State Oil and Industry University',

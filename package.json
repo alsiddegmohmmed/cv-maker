@@ -1,7 +1,7 @@
 {
   "name": "cv-maker",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "keywords": [
     "resume builder",
@@ -28,7 +28,10 @@
     "extends": [
       "stylelint-config-standard",
       "stylelint-stylus/standard"
-    ]
+    ],
+    "rules": {
+      "media-feature-range-notation": "prefix"
+    }
   },
   "prettier": {
     "singleQuote": true,

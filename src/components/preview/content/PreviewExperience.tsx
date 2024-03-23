@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { type ReactElement } from 'react';
 
-export const Experience = (): ReactElement => {
+export const PreviewExperience = (): ReactElement => {
   const WORKPLACES = [
     {
       company: 'AI Solutions',

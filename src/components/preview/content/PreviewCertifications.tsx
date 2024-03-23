@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-export const Certifications = (): ReactElement => {
+export const PreviewCertifications = (): ReactElement => {
   const CERTIFICATES = [
     {
       title: 'Front End Development Libraries',

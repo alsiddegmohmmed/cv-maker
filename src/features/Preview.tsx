@@ -1,20 +1,20 @@
 import { type ReactElement } from 'react';
 
-import { Personal } from '@/components/preview/Personal.tsx';
-import { Certifications } from '@/components/preview/content/Certifications.tsx';
-import { Education } from '@/components/preview/content/Education.tsx';
-import { Experience } from '@/components/preview/content/Experience.tsx';
-import { Projects } from '@/components/preview/content/Projects.tsx';
-import { Skills } from '@/components/preview/content/Skills.tsx';
+import { PreviewPersonal } from '@/components/preview/PreviewPersonal.tsx';
+import { PreviewCertifications } from '@/components/preview/content/PreviewCertifications.tsx';
+import { PreviewEducation } from '@/components/preview/content/PreviewEducation.tsx';
+import { PreviewExperience } from '@/components/preview/content/PreviewExperience.tsx';
+import { PreviewProjects } from '@/components/preview/content/PreviewProjects.tsx';
+import { PreviewSkills } from '@/components/preview/content/PreviewSkills.tsx';
 
 export const Preview = (): ReactElement => (
   <main>
-    <Personal />
-    <Experience />
-    <Education />
-    <Skills />
-    <Projects />
-    <Certifications />
+    <PreviewPersonal />
+    <PreviewExperience />
+    <PreviewEducation />
+    <PreviewSkills />
+    <PreviewProjects />
+    <PreviewCertifications />
   </main>
 );
 

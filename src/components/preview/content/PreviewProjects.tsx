@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-export const Projects = (): ReactElement => {
+export const PreviewProjects = (): ReactElement => {
   const PROJECT_LIST = [
     {
       name: 'JS Algorithms',

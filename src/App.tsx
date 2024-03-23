@@ -5,12 +5,16 @@ import 'non.geist';
 
 import { Footer } from '@/components/banners/Footer.tsx';
 import { Header } from '@/components/banners/Header.tsx';
+import { Editor } from '@/features/Editor.tsx';
 import { Preview } from '@/features/Preview.tsx';
 
 export const App = (): ReactElement => (
   <>
     <Header />
-    <Preview />
+    <div id='primary-container'>
+      <Editor />
+      <Preview />
+    </div>
     <Footer />
   </>
 );
