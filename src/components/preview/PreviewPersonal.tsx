@@ -18,17 +18,17 @@ export const PreviewPersonal = (): ReactElement => {
           title={mailToUrl}
           rel='noopener noreferrer nofollow'>
           {person.email}
-        </a>{' '}
-        | {person.phone}
+        </a>
+        {person.phone && ' | ' + person.phone}
       </h3>
 
       <h4>
         {Object.entries(person.links).map(([site, link], i) => (
           <span key={site}>
             <a title={link} href={link} rel='noopener noreferrer nofollow'>
-              {site}
+              {link && site}
             </a>
-            {i < Object.entries(person.links).length - 1 && ' | '}
+            {i < Object.entries(person.links).length - 1 && link && ' | '}
           </span>
         ))}
       </h4>

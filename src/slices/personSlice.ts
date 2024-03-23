@@ -14,27 +14,23 @@ interface PersonDetails {
 
 interface PersonState {
   person: PersonDetails;
-  setPerson: ({
-    name,
-    title,
-    email,
-    phone,
-    links
-  }: Partial<PersonDetails>) => void;
+  setPerson: (person: Partial<PersonDetails>) => void;
 }
 
+const initialPerson = {
+  name: '',
+  title: '',
+  email: '',
+  phone: '',
+  links: {
+    Portfolio: '',
+    GitHub: '',
+    LinkedIn: ''
+  }
+};
+
 const createPersonSlice: StateCreator<PersonState> = set => ({
-  person: {
-    name: '',
-    title: '',
-    email: '',
-    phone: '',
-    links: {
-      Portfolio: '',
-      GitHub: '',
-      LinkedIn: ''
-    }
-  },
+  person: { ...initialPerson },
 
   setPerson: ({
     name = '',

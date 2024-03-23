@@ -6,7 +6,7 @@
 > - **[TypeScript](https://typescriptlang.org)**
 > - **[React](https://react.dev)**
 > - **[Million.js](https://million.dev)**
-> - **[Zustand](https://docs.pmnd.rs/zustand)**
+> - **[Zustand](https://zustand-demo.pmnd.rs)**
 > - **[dnd kit](https://dndkit.com)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[Luxon](https://moment.github.io/luxon)**
