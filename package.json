@@ -1,7 +1,7 @@
 {
   "name": "cv-maker",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "keywords": [
     "resume builder",
@@ -79,8 +79,8 @@
     "stylelint-config-standard": "^36.0.0",
     "stylelint-stylus": "^1.0.0",
     "typescript": "^5.4.3",
-    "vite": "^5.2.3",
-    "vite-plugin-pwa": "^0.19.6",
+    "vite": "^5.2.4",
+    "vite-plugin-pwa": "^0.19.7",
     "vitest": "^1.4.0",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0"

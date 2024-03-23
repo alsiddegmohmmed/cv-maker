@@ -1,32 +1,28 @@
 import { type ReactElement } from 'react';
-import { ReactToPrint } from 'react-to-print';
 
 import { Personal } from '@/components/preview/Personal.tsx';
-import { Education } from '@/components/preview/expertise/Education.tsx';
-import { Experience } from '@/components/preview/expertise/Experience.tsx';
-import { Projects } from '@/components/preview/expertise/Projects.tsx';
-import { Certifications } from '@/components/preview/proficiency/Certifications.tsx';
-import { Skills } from '@/components/preview/proficiency/Skills.tsx';
+import { Certifications } from '@/components/preview/content/Certifications.tsx';
+import { Education } from '@/components/preview/content/Education.tsx';
+import { Experience } from '@/components/preview/content/Experience.tsx';
+import { Projects } from '@/components/preview/content/Projects.tsx';
+import { Skills } from '@/components/preview/content/Skills.tsx';
 
-export const Preview = (): ReactElement => {
-  let componentRef: HTMLElement | null = null;
+export const Preview = (): ReactElement => (
+  <main>
+    <Personal />
+    <Experience />
+    <Education />
+    <Skills />
+    <Projects />
+    <Certifications />
+  </main>
+);
 
-  return (
-    <>
-      <main ref={el => (componentRef = el)}>
-        <Personal />
-        <Experience />
-        <Education />
-        <Skills />
-        <Projects />
-        <Certifications />
-      </main>
-      <ReactToPrint
-        trigger={() => <button className='btn btn-print'>Print CV</button>}
-        content={() => componentRef}
-        pageStyle='print'
-        documentTitle='CV'
-      />
-    </>
-  );
-};
+/*
+  <ReactToPrint
+    pageStyle='main{width:100%!important;max-width:100svw!important;height:100svh!important}'
+    trigger={() => <button>Download</button>}
+    content={() => printRef}
+    documentTitle='CV'
+  />
+*/

@@ -20,7 +20,7 @@ export const Certifications = (): ReactElement => {
   ];
 
   return (
-    <div id='certifications' className='preview-section'>
+    <div id='certifications' className='content'>
       <h1>CERTIFICATIONS</h1>
 
       <ul>
