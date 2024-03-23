@@ -20,7 +20,7 @@ export const Education = (): ReactElement => {
   ];
 
   return (
-    <div id='education'>
+    <div id='education' className='preview-section'>
       <h1>EDUCATION</h1>
 
       {COLLEGES.map((college, index) => (

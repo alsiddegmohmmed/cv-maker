@@ -25,7 +25,7 @@ export const Experience = (): ReactElement => {
   ];
 
   return (
-    <div id='experience'>
+    <div id='experience' className='preview-section'>
       <h1>EXPERIENCE</h1>
 
       {WORKPLACES.map((workplace, index) => (

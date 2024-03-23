@@ -33,7 +33,7 @@ export const Projects = (): ReactElement => {
   ];
 
   return (
-    <div id='projects'>
+    <div id='projects' className='preview-section'>
       <h1>PROJECTS</h1>
 
       {PROJECT_LIST.map((project, index) => (

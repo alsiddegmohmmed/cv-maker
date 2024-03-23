@@ -1,13 +1,30 @@
 main
   margin auto
-  height 70rem
   color black
   overflow-y auto
   max-width 95svw
-  width 49.625rem
   background white
   box-shadow shadow-main
-  padding 1.4375rem 2.9375rem
+  height calc(var(--size-preview) * 70)
+  width calc(var(--size-preview) * 49.625)
+  padding calc(var(--size-preview) * 1.4375) calc(var(--size-preview) * 2.9375)
+
+  .preview-section
+    margin var(--size-preview) 0
+
+  h1
+  h2
+  h3
+  h4
+  ul
+  p
+    margin 0
+    font-weight 400
+
+  h1
+    line-height 1
+    font-weight 500
+    font-size calc(var(--size-preview) * 1.5)
 
   a
     color inherit
@@ -16,7 +33,7 @@ main
     -webkit-tap-highlight-color bg-tap
 
     &:focus-visible
-      outline 0.125rem solid fg-main
+      outline 2px solid fg-main
 
     @media (hover hover)
       &:hover

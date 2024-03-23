@@ -29,7 +29,7 @@ export const Skills = (): ReactElement => {
   };
 
   return (
-    <div id='skills'>
+    <div id='skills' className='preview-section'>
       <h1>SKILLS</h1>
 
       {Object.entries(SKILLSETS).map(([key, values]) => (

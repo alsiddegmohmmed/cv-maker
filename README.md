@@ -9,6 +9,7 @@
 > - **[Zustand](https://docs.pmnd.rs/zustand)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[Luxon](https://moment.github.io/luxon)**
+> - **[ReactToPrint](https://github.com/MatthewHerbst/react-to-print)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Font Awesome](https://fontawesome.com)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
