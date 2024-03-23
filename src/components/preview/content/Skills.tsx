@@ -32,14 +32,14 @@ export const Skills = (): ReactElement => {
     <div id='skills' className='content'>
       <h1>SKILLS</h1>
 
-      {Object.entries(SKILLSETS).map(([key, values]) => (
-        <div key={key}>
-          <h2>{key}</h2>
+      {Object.entries(SKILLSETS).map(([set, skills]) => (
+        <div key={set}>
+          <h2>{set}</h2>
           <p>
-            {values.map((value, index) => (
-              <span key={value}>
-                {value}
-                {index !== values.length - 1 && ', '}
+            {skills.map((skill, i) => (
+              <span key={skill}>
+                {skill}
+                {i !== skills.length - 1 && ', '}
               </span>
             ))}
           </p>

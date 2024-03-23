@@ -7,6 +7,7 @@
 > - **[React](https://react.dev)**
 > - **[Million.js](https://million.dev)**
 > - **[Zustand](https://docs.pmnd.rs/zustand)**
+> - **[dnd kit](https://dndkit.com)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[Luxon](https://moment.github.io/luxon)**
 > - **[ReactToPrint](https://github.com/MatthewHerbst/react-to-print)**

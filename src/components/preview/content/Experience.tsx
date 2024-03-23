@@ -28,8 +28,8 @@ export const Experience = (): ReactElement => {
     <div id='experience' className='content'>
       <h1>EXPERIENCE</h1>
 
-      {WORKPLACES.map((workplace, index) => (
-        <div key={index}>
+      {WORKPLACES.map(workplace => (
+        <div key={workplace.company + workplace.position}>
           <span>
             <h2>
               {workplace.company} | {workplace.position}
@@ -43,8 +43,8 @@ export const Experience = (): ReactElement => {
           </span>
 
           <ul>
-            {workplace.descriptions.map((description, index) => (
-              <li key={index}>{description}</li>
+            {workplace.descriptions.map(description => (
+              <li key={description}>{description}</li>
             ))}
           </ul>
         </div>

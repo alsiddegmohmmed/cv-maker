@@ -25,7 +25,7 @@ export const Certifications = (): ReactElement => {
 
       <ul>
         {CERTIFICATES.map(certificate => (
-          <li key={certificate.title}>
+          <li key={certificate.title + certificate.issuer}>
             {certificate.title} -{' '}
             <a
               title={certificate.link}

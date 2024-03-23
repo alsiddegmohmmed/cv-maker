@@ -13,7 +13,7 @@ export const Personal = (): ReactElement => {
     }
   };
 
-  const mailTo = 'mailto:' + PERSONAL_DETAILS.email;
+  const mailToUrl = 'mailto:' + PERSONAL_DETAILS.email;
 
   return (
     <div id='personal'>
@@ -21,19 +21,22 @@ export const Personal = (): ReactElement => {
       <h2>{PERSONAL_DETAILS.title}</h2>
 
       <h3>
-        <a href={mailTo} title={mailTo} rel='noopener noreferrer nofollow'>
+        <a
+          href={mailToUrl}
+          title={mailToUrl}
+          rel='noopener noreferrer nofollow'>
           {PERSONAL_DETAILS.email}
         </a>{' '}
         | {PERSONAL_DETAILS.phone}
       </h3>
 
       <h4>
-        {Object.entries(PERSONAL_DETAILS.links).map(([key, value], index) => (
-          <span key={key}>
-            <a title={value} href={value} rel='noopener noreferrer nofollow'>
-              {key}
+        {Object.entries(PERSONAL_DETAILS.links).map(([site, link], i) => (
+          <span key={site}>
+            <a title={link} href={link} rel='noopener noreferrer nofollow'>
+              {site}
             </a>
-            {index < Object.entries(PERSONAL_DETAILS.links).length - 1 && ' | '}
+            {i < Object.entries(PERSONAL_DETAILS.links).length - 1 && ' | '}
           </span>
         ))}
       </h4>

@@ -36,8 +36,8 @@ export const Projects = (): ReactElement => {
     <div id='projects' className='content'>
       <h1>PROJECTS</h1>
 
-      {PROJECT_LIST.map((project, index) => (
-        <div key={index}>
+      {PROJECT_LIST.map(project => (
+        <div key={project.name}>
           <span>
             <h2>
               {project.name} |{' '}
@@ -49,11 +49,11 @@ export const Projects = (): ReactElement => {
               </a>
             </h2>
             <h3>
-              {project.stack.map((value, index) => (
-                <>
-                  {value}
-                  {index !== project.stack.length - 1 && ', '}
-                </>
+              {project.stack.map((tech, i) => (
+                <span key={tech} id='tech-container'>
+                  {tech}
+                  {i !== project.stack.length - 1 && ', '}
+                </span>
               ))}
             </h3>
           </span>

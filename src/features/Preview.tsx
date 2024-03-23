@@ -22,7 +22,7 @@ export const Preview = (): ReactElement => (
   <ReactToPrint
     trigger={() => <button>Print</button>}
     content={() => printRef}
-    documentTitle='CV'
+    documentTitle='Eldar Pashazade CV'
     pageStyle='main {
       width: 100% !important;
       box-shadow: none !important;
