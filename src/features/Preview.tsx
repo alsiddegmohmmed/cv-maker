@@ -20,9 +20,15 @@ export const Preview = (): ReactElement => (
 
 /*
   <ReactToPrint
-    pageStyle='main{width:100%!important;max-width:100svw!important;height:100svh!important}'
-    trigger={() => <button>Download</button>}
+    trigger={() => <button>Print</button>}
     content={() => printRef}
     documentTitle='CV'
+    pageStyle='main {
+      width: 100% !important;
+      box-shadow: none !important;
+      max-height: none !important;
+      max-width: 100svw !important;
+      min-height: 100svh !important;
+    }'
   />
 */
