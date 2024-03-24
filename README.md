@@ -9,7 +9,6 @@
 > - **[Zustand](https://zustand-demo.pmnd.rs)**
 > - **[dnd kit](https://dndkit.com)**
 > - **[Stylus](https://stylus-lang.com)**
-> - **[Luxon](https://moment.github.io/luxon)**
 > - **[ReactToPrint](https://github.com/MatthewHerbst/react-to-print)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Font Awesome](https://fontawesome.com)**

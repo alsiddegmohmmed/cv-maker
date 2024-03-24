@@ -2,7 +2,7 @@ import { type StateCreator } from 'zustand';
 
 // const WORKPLACES = [
 //   {
-//     company: 'AI Solutions',
+//     employer: 'AI Solutions',
 //     position: 'Front End Developer',
 //     location: 'Baku, Azerbaijan',
 //     startDate: '2023-01',
@@ -13,7 +13,7 @@ import { type StateCreator } from 'zustand';
 //     ]
 //   },
 //   {
-//     company: 'Pasha Bank',
+//     employer: 'Pasha Bank',
 //     position: 'Front End Intern',
 //     location: 'Baku, Azerbaijan',
 //     startDate: '2022-08',
@@ -23,7 +23,7 @@ import { type StateCreator } from 'zustand';
 // ];
 
 interface ExperienceDetails {
-  company: string;
+  employer: string;
   position: string;
   location: string;
   startDate: string;
@@ -48,4 +48,4 @@ const createExperienceSlice: StateCreator<ExperienceState> = set => ({
   }
 });
 
-export { type ExperienceState, createExperienceSlice };
+export { type ExperienceDetails, type ExperienceState, createExperienceSlice };

@@ -113,7 +113,7 @@ export const EditorPersonal = (): ReactElement => {
               id='Portfolio'
               type='text'
               minLength={1}
-              maxLength={128}
+              maxLength={256}
               value={person.links.Portfolio}
               onInput={handleLinkInput}
             />
@@ -128,7 +128,7 @@ export const EditorPersonal = (): ReactElement => {
               id='GitHub'
               type='text'
               minLength={1}
-              maxLength={128}
+              maxLength={256}
               value={person.links.GitHub}
               onInput={handleLinkInput}
             />
@@ -143,7 +143,7 @@ export const EditorPersonal = (): ReactElement => {
               id='LinkedIn'
               type='text'
               minLength={1}
-              maxLength={128}
+              maxLength={256}
               value={person.links.LinkedIn}
               onInput={handleLinkInput}
             />

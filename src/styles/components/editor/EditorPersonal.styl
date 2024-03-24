@@ -1,5 +1,31 @@
 #editor-personal
+#editor-experience
   grid-template-columns repeat(2, minmax(4rem, 1fr))
 
 #editor-personal-links
+#editor-experience-date
   grid-template-columns repeat(3, minmax(4rem, 1fr))
+
+.add-button
+  height 3rem
+  color fg-main
+  cursor pointer
+  border border-bg
+  font-size 1.25rem
+  background white
+  border-radius radius
+  transition transition
+  transition-property color, border-color, background
+
+  &:focus-visible
+    outline-style solid
+    outline-color border-color
+
+  &:disabled
+    color bg-field
+    cursor not-allowed
+    background transparent
+
+  @media (hover hover)
+    &:hover:not(:disabled)
+      background hover-color

@@ -1,13 +1,9 @@
-import { DateTime } from 'luxon';
 import { type ReactElement } from 'react';
 
 import { useStore } from '@/store.ts';
 
 export const PreviewExperience = (): ReactElement => {
   const { experiences } = useStore();
-
-  const formatDate = (dateStr: string): string =>
-    DateTime.fromISO(dateStr).toFormat('MMM y');
 
   const hasExperiences = experiences.length > 0;
 
@@ -16,14 +12,14 @@ export const PreviewExperience = (): ReactElement => {
       {hasExperiences && <h1>EXPERIENCE</h1>}
 
       {experiences.map(experience => (
-        <div key={experience.company + experience.position}>
+        <div key={experience.employer + experience.position}>
           <span>
             <h2>
-              {experience.company} | {experience.position}
+              {experience.employer} | {experience.position}
             </h2>
             <h3>
-              {experience.location} | {formatDate(experience.startDate)} -{' '}
-              {experience.endDate ? formatDate(experience.endDate) : 'Present'}
+              {experience.location} | {experience.startDate} -{' '}
+              {experience.endDate || 'Present'}
             </h3>
           </span>
 

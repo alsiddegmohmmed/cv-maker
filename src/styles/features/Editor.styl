@@ -1,22 +1,24 @@
 section
-  padding 1rem
   color bg-field
   margin 0 0.5rem
   max-width 95svw
   width 49.625rem
   background fg-main
+  padding 0.75rem 1rem
   border-radius radius
   box-shadow shadow-main
 
   input
+  textarea
+    resize none
     color black
     outline outline
     min-height 1.5rem
     background white
+    border border-fg
     caret-color fg-main
     border-radius radius
     padding 0.375rem 0.5rem
-    border 2px solid fg-main
     transition border-color transition
 
   @media (hover hover)
@@ -32,6 +34,7 @@ section
 
   .editor-accordion
     display flex
+    padding 0.25rem 0
     align-items center
     justify-content space-between
 
@@ -39,10 +42,10 @@ section
       width 2.5rem
       height 2.25rem
       color bg-field
+      border outline
       border-radius radius
       transition transition
       background transparent
-      border 2px solid transparent
       transition-property border-color, background
 
       &:focus-visible
@@ -62,19 +65,17 @@ section
       color fg-main
       background bg-main
 
-  form
-    gap 1rem
-
-    h1
-      margin 0
-      font-weight 500
+  h1
+    margin 0
+    font-weight 500
 
 .editor-section-container
   gap 0.75rem
   display flex
   overflow hidden
-  max-height 14rem
-  margin-top 0.75rem
+  max-height 24rem
+  margin-top 0.25rem
+  margin-bottom 0.5rem
   flex-direction column
   transition transition
   transition-property max-height, margin-top
