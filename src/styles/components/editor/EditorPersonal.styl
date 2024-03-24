@@ -7,10 +7,11 @@
   grid-template-columns repeat(3, minmax(4rem, 1fr))
 
 .add-button
+  border 0
   height 3rem
+  margin 0 1px
   color fg-main
   cursor pointer
-  border border-bg
   font-size 1.25rem
   background white
   border-radius radius
@@ -28,4 +29,4 @@
 
   @media (hover hover)
     &:hover:not(:disabled)
-      background hover-color
+      background bg-main

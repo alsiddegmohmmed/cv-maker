@@ -12,7 +12,7 @@ export const PreviewExperience = (): ReactElement => {
       {hasExperiences && <h1>EXPERIENCE</h1>}
 
       {experiences.map(experience => (
-        <div key={experience.employer + experience.position}>
+        <div key={experience.id}>
           <span>
             <h2>
               {experience.employer} | {experience.position}

@@ -7,6 +7,7 @@
 > - **[React](https://react.dev)**
 > - **[Million.js](https://million.dev)**
 > - **[Zustand](https://zustand-demo.pmnd.rs)**
+> - **[Nano ID](https://zelark.github.io/nano-id-cc)**
 > - **[dnd kit](https://dndkit.com)**
 > - **[Stylus](https://stylus-lang.com)**
 > - **[ReactToPrint](https://github.com/MatthewHerbst/react-to-print)**

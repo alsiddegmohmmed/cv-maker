@@ -1,14 +1,27 @@
+import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
+import {
+  restrictToParentElement,
+  restrictToVerticalAxis
+} from '@dnd-kit/modifiers';
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy
+} from '@dnd-kit/sortable';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
+import { ExperienceList } from '@/components/editor/content/ExperienceList.tsx';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EditorExperience = (): ReactElement => {
-  const { addExperience } = useStore();
+  const { experiences, addExperience, sortExperiences } = useStore();
   const [isVisible, setIsVisible] = useState(false);
   const [experienceObj, setExperienceObj] = useState<ExperienceDetails>({
+    id: '',
     employer: '',
     position: '',
     location: '',
@@ -44,6 +57,7 @@ export const EditorExperience = (): ReactElement => {
       .map(block => block.trim());
     setExperienceObj({
       ...experienceObj,
+      id: nanoid(),
       descriptions
     });
   };
@@ -51,6 +65,7 @@ export const EditorExperience = (): ReactElement => {
   const handleAddExperience = (): void => {
     addExperience(experienceObj);
     setExperienceObj({
+      id: '',
       employer: '',
       position: '',
       location: '',
@@ -58,6 +73,20 @@ export const EditorExperience = (): ReactElement => {
       endDate: '',
       descriptions: []
     });
+  };
+
+  // Drag & Drop Sorting
+  const onDragEnd = (e: DragEndEvent): void => {
+    const { active, over } = e;
+    if (active.id !== over?.id) {
+      const prevIndex = experiences.findIndex(
+        experience => experience.id === active.id
+      );
+      const newIndex = experiences.findIndex(
+        experience => experience.id === over?.id
+      );
+      sortExperiences(arrayMove(experiences, prevIndex, newIndex));
+    }
   };
 
   return (
@@ -73,6 +102,21 @@ export const EditorExperience = (): ReactElement => {
       </div>
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+        <div className='experience-list'>
+          <DndContext
+            collisionDetection={closestCenter}
+            onDragEnd={onDragEnd}
+            modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
+            <SortableContext
+              items={experiences}
+              strategy={verticalListSortingStrategy}>
+              {experiences.map(experience => (
+                <ExperienceList key={experience.id} experience={experience} />
+              ))}
+            </SortableContext>
+          </DndContext>
+        </div>
+
         <div id='editor-experience'>
           <span>
             <label htmlFor='employer'>Employer</label>
