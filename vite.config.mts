@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react-swc';
-import { vite } from 'million/compiler';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
@@ -9,7 +8,6 @@ export default defineConfig({
   resolve: { alias: { '@': '/src' } },
   plugins: [
     react(),
-    vite({ auto: true }),
     VitePWA({
       srcDir: 'src',
       filename: 'sw.ts',

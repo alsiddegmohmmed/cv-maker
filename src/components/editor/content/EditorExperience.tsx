@@ -8,11 +8,10 @@ import {
   arrayMove,
   verticalListSortingStrategy
 } from '@dnd-kit/sortable';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
+import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { ExperienceList } from '@/components/editor/content/ExperienceList.tsx';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
@@ -35,11 +34,8 @@ export const EditorExperience = (): ReactElement => {
     !experienceObj.position ||
     !experienceObj.location ||
     !experienceObj.startDate ||
+    !(experienceObj.descriptions.length > 0) ||
     experienceObj.descriptions.some(desc => desc.trim() === '');
-
-  const toggleVisibility = (): void => {
-    setIsVisible(prev => !prev);
-  };
 
   const handleExperienceInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
@@ -93,29 +89,26 @@ export const EditorExperience = (): ReactElement => {
     <>
       <div className='editor-accordion'>
         <h1>Experience</h1>
-        <button type='button' onClick={toggleVisibility}>
-          <FontAwesomeIcon
-            size='lg'
-            icon={isVisible ? faChevronUp : faChevronDown}
-          />
-        </button>
+        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
-        <div className='experience-list'>
-          <DndContext
-            collisionDetection={closestCenter}
-            onDragEnd={onDragEnd}
-            modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-            <SortableContext
-              items={experiences}
-              strategy={verticalListSortingStrategy}>
-              {experiences.map(experience => (
-                <ExperienceList key={experience.id} experience={experience} />
-              ))}
-            </SortableContext>
-          </DndContext>
-        </div>
+        {experiences.length > 0 && (
+          <div className='experience-list'>
+            <DndContext
+              onDragEnd={onDragEnd}
+              collisionDetection={closestCenter}
+              modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
+              <SortableContext
+                items={experiences}
+                strategy={verticalListSortingStrategy}>
+                {experiences.map(experience => (
+                  <ExperienceList key={experience.id} experience={experience} />
+                ))}
+              </SortableContext>
+            </DndContext>
+          </div>
+        )}
 
         <div id='editor-experience'>
           <span>

@@ -1,20 +1,13 @@
-import {
-  faChevronDown,
-  faChevronUp,
-  faLink
-} from '@fortawesome/free-solid-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, type ChangeEvent, type ReactElement } from 'react';
 
+import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
 export const EditorPersonal = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(true);
   const { person, setPerson } = useStore();
-
-  const toggleVisibility = (): void => {
-    setIsVisible(prev => !prev);
-  };
 
   const handlePersonInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setPerson({
@@ -37,12 +30,7 @@ export const EditorPersonal = (): ReactElement => {
     <>
       <div className='editor-accordion'>
         <h1>Personal Info</h1>
-        <button type='button' onClick={toggleVisibility}>
-          <FontAwesomeIcon
-            size='lg'
-            icon={isVisible ? faChevronUp : faChevronDown}
-          />
-        </button>
+        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>

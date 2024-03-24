@@ -1,0 +1,58 @@
+#editor-personal
+#editor-experience
+  grid-template-columns repeat(2, minmax(4rem, 1fr))
+
+#editor-personal-links
+#editor-experience-date
+  grid-template-columns repeat(3, minmax(4rem, 1fr))
+
+.dragging
+  z-index 1
+
+  #drag-btn
+    cursor grabbing !important
+
+.experience-item
+  background fg-main
+  border-radius radius
+  padding 0.25rem 0
+  display flex !important
+  justify-content space-between
+
+  span
+    display inherit
+    align-items center
+    gap 0.75rem !important
+    flex-direction row !important
+
+    h1
+      font-weight 400
+
+  #trash-btn
+    cursor pointer
+    -webkit-tap-highlight-color fg-tap
+
+  #drag-btn
+    cursor grab
+
+  #drag-btn
+  #trash-btn
+    width 2.5rem
+    height 2.25rem
+    color bg-field
+    border outline
+    border-radius radius
+    transition transition
+    background transparent
+    transition-property border-color, background
+
+    &:focus-visible
+      outline-style solid
+      outline-color border-color
+
+    @media (hover hover)
+      &:hover
+        background border-color
+
+.experience-list
+  gap 0.375rem !important

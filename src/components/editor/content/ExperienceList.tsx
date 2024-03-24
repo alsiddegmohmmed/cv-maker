@@ -13,10 +13,12 @@ export const ExperienceList = ({
   experience: ExperienceDetails;
 }): ReactElement => {
   const id = experience.id;
+
   // Drag & Drop Movement
-  const { setNodeRef, listeners, transition, transform } = useSortable({
-    id
-  });
+  const { setNodeRef, listeners, transition, transform, isDragging } =
+    useSortable({
+      id
+    });
 
   const { removeExperience } = useStore();
 
@@ -30,13 +32,28 @@ export const ExperienceList = ({
   };
 
   return (
-    <div id={id} className='experience-item' ref={setNodeRef} style={style}>
-      <div>{experience.employer}</div>
-      <button {...listeners} type='button' title='Drag Project'>
-        <FontAwesomeIcon size='sm' icon={faGripVertical} />
-      </button>
-      <button type='button' onClick={handleRemove}>
-        <FontAwesomeIcon size='sm' icon={faTrash} />
+    <div
+      id={id}
+      className={`${isDragging ? 'dragging' : ''} experience-item`}
+      ref={setNodeRef}
+      style={style}>
+      <span>
+        <button
+          id='drag-btn'
+          title='Reorder Experience'
+          {...listeners}
+          type='button'>
+          <FontAwesomeIcon icon={faGripVertical} />
+        </button>
+        <h1>{experience.employer}</h1>
+      </span>
+
+      <button
+        id='trash-btn'
+        title='Remove Experience'
+        type='button'
+        onClick={handleRemove}>
+        <FontAwesomeIcon icon={faTrash} />
       </button>
     </div>
   );

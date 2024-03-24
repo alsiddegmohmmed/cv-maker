@@ -1,7 +1,7 @@
 {
   "name": "cv-maker",
   "private": true,
-  "version": "0.3.5",
+  "version": "0.4.0",
   "type": "module",
   "keywords": [
     "resume builder",
@@ -50,7 +50,6 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "million": "^3.0.6",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.6",
     "non.geist": "^1.0.2",
