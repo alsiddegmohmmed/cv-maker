@@ -9,9 +9,11 @@ export const PreviewExperience = (): ReactElement => {
   const formatDate = (dateStr: string): string =>
     DateTime.fromISO(dateStr).toFormat('MMM y');
 
+  const hasExperiences = experiences.length > 0;
+
   return (
     <div id='experience' className='content'>
-      <h1>EXPERIENCE</h1>
+      {hasExperiences && <h1>EXPERIENCE</h1>}
 
       {experiences.map(experience => (
         <div key={experience.company + experience.position}>

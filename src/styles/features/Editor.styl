@@ -1,14 +1,93 @@
 section
   padding 1rem
   color bg-field
+  margin 0 0.5rem
   max-width 95svw
   width 49.625rem
-  margin 0 1.3125rem
   background fg-main
   border-radius radius
   box-shadow shadow-main
 
-  form
-    gap 0.5rem
+  input
+    color black
+    outline outline
+    min-height 1.5rem
+    background white
+    caret-color fg-main
+    border-radius radius
+    padding 0.375rem 0.5rem
+    border 2px solid fg-main
+    transition border-color transition
+
+  @media (hover hover)
+    input:hover
+    textarea:hover
+      outline outline
+      border-color border-color
+
+  input:focus
+  textarea:focus
+    outline outline
+    border-color border-color
+
+  .editor-accordion
     display flex
+    align-items center
+    justify-content space-between
+
+    button
+      width 2.5rem
+      height 2.25rem
+      color bg-field
+      border-radius radius
+      transition transition
+      background transparent
+      border 2px solid transparent
+      transition-property border-color, background
+
+      &:focus-visible
+        outline-style solid
+        outline-color border-color
+
+      @media (hover hover)
+        &:hover
+          cursor pointer
+          background border-color
+
+  h1
+  label
+    user-select none
+
+    &::selection
+      color fg-main
+      background bg-main
+
+  form
+    gap 1rem
+
+    h1
+      margin 0
+      font-weight 500
+
+.editor-section-container
+  gap 0.75rem
+  display flex
+  overflow hidden
+  max-height 14rem
+  margin-top 0.75rem
+  flex-direction column
+  transition transition
+  transition-property max-height, margin-top
+
+  &.hide
+    max-height 0
+    margin-top 0
+
+  div
+    display grid
+    gap 0.75rem 1rem
+
+  span
+    display flex
+    gap 0.375rem
     flex-direction column
