@@ -1,48 +1,33 @@
 import { type ReactElement } from 'react';
 
+import { useStore } from '@/store.ts';
+
 export const PreviewSkills = (): ReactElement => {
-  const SKILLSETS = {
-    'Programming Languages': [
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'TypeScript',
-      'CoffeeScript'
-    ],
-    'Libraries / Frameworks': [
-      'jQuery',
-      'React',
-      'Redux',
-      'Solid',
-      'Mithril',
-      'SCSS',
-      'PostCSS',
-      'Stylus',
-      'Tailwind',
-      'Bootstrap',
-      'Chakra',
-      'Node',
-      'Jest'
-    ],
-    'Tools / Platforms': ['ESLint', 'Vite', 'webpack'],
-    Databases: ['MongoDB']
+  const { skills } = useStore();
+
+  const skillCategories = {
+    progLang: 'Programming Languages',
+    libFrame: 'Libraries / Frameworks',
+    toolPlat: 'Tools / Platforms',
+    databases: 'Databases'
   };
+
+  const hasSkills = Object.values(skills).some(
+    skill => typeof skill === 'string' && skill.trim()
+  );
 
   return (
     <div id='skills' className='content'>
-      <h1>SKILLS</h1>
+      {hasSkills && <h1>SKILLS</h1>}
 
-      {Object.entries(SKILLSETS).map(([set, skills]) => (
+      {Object.entries(skills).map(([set, skill]: [string, string]) => (
         <div key={set}>
-          <h2>{set}</h2>
-          <p>
-            {skills.map((skill, i) => (
-              <span key={skill}>
-                {skill}
-                {i !== skills.length - 1 && ', '}
-              </span>
-            ))}
-          </p>
+          {skill.trim() && (
+            <>
+              <h2>{skillCategories[set as keyof typeof skillCategories]}</h2>
+              <p>{skill}</p>
+            </>
+          )}
         </div>
       ))}
     </div>

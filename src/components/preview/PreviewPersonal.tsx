@@ -7,9 +7,11 @@ export const PreviewPersonal = (): ReactElement => {
 
   const mailToUrl = 'mailto:' + person.email;
   const hasPersonInfo = Object.values(person).some(
-    info => typeof info === 'string' && info !== ''
+    info => typeof info === 'string' && info.trim()
   );
-  const hasLinkInfo = Object.values(person.links).some(link => link !== '');
+  const hasLinkInfo = Object.values(person.links).some((link: string) =>
+    link.trim()
+  );
 
   return (
     <div id='personal'>
@@ -30,16 +32,20 @@ export const PreviewPersonal = (): ReactElement => {
       </h3>
 
       <h4>
-        {Object.entries(person.links).map(([site, link], i) => (
-          <span key={site}>
-            {link && (
-              <a title={link} href={link} rel='noopener noreferrer nofollow'>
-                {site}
-              </a>
-            )}
-            {i < Object.entries(person.links).length - 1 && link && ' | '}
-          </span>
-        ))}
+        {Object.entries(person.links).map(
+          ([site, link]: [string, string], i) => (
+            <span key={site}>
+              {link.trim() && (
+                <a title={link} href={link} rel='noopener noreferrer nofollow'>
+                  {site}
+                </a>
+              )}
+              {i < Object.entries(person.links).length - 1 &&
+                link.trim() &&
+                ' | '}
+            </span>
+          )
+        )}
       </h4>
       {(hasPersonInfo || hasLinkInfo) && <hr />}
     </div>

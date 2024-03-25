@@ -1,15 +1,18 @@
 import { type StateCreator } from 'zustand';
 
+import { useSliceReset } from '@/store.ts';
+interface PersonLinks {
+  Portfolio: string;
+  GitHub: string;
+  LinkedIn: string;
+}
+
 interface PersonDetails {
   name: string;
   title: string;
   email: string;
   phone: string;
-  links: {
-    Portfolio: string;
-    GitHub: string;
-    LinkedIn: string;
-  };
+  links: PersonLinks;
 }
 
 interface PersonState {
@@ -17,7 +20,7 @@ interface PersonState {
   setPerson: (person: Partial<PersonDetails>) => void;
 }
 
-const initialPerson = {
+const initialPerson: PersonDetails = {
   name: '',
   title: '',
   email: '',
@@ -29,30 +32,23 @@ const initialPerson = {
   }
 };
 
-const createPersonSlice: StateCreator<PersonState> = set => ({
-  person: { ...initialPerson },
+const createPersonSlice: StateCreator<PersonState> = set => (
+  useSliceReset.add(() => {
+    set({ person: initialPerson });
+  }),
+  {
+    person: { ...initialPerson },
 
-  setPerson: ({
-    name = '',
-    title = '',
-    email = '',
-    phone = '',
-    links = {
-      Portfolio: '',
-      GitHub: '',
-      LinkedIn: ''
+    setPerson: (updatedPerson: Partial<PersonDetails>): void => {
+      set({
+        person: {
+          ...initialPerson,
+          ...updatedPerson,
+          links: { ...initialPerson.links, ...updatedPerson.links }
+        }
+      });
     }
-  }): void => {
-    set({
-      person: {
-        name,
-        title,
-        email,
-        phone,
-        links
-      }
-    });
   }
-});
+);
 
 export { type PersonState, createPersonSlice };

@@ -7,8 +7,12 @@ import { PreviewExperience } from '@/components/preview/content/PreviewExperienc
 import { PreviewProjects } from '@/components/preview/content/PreviewProjects.tsx';
 import { PreviewSkills } from '@/components/preview/content/PreviewSkills.tsx';
 
-export const Preview = (): ReactElement => (
-  <main>
+export const Preview = ({
+  printRef
+}: {
+  printRef: React.RefObject<HTMLElement>;
+}): ReactElement => (
+  <main id='preview' ref={printRef}>
     <PreviewPersonal />
     <PreviewExperience />
     <PreviewEducation />
@@ -17,18 +21,3 @@ export const Preview = (): ReactElement => (
     <PreviewCertifications />
   </main>
 );
-
-/*
-  <ReactToPrint
-    trigger={() => <button>Print</button>}
-    content={() => printRef}
-    documentTitle='Eldar Pashazade CV'
-    pageStyle='main {
-      width: 100% !important;
-      box-shadow: none !important;
-      max-height: none !important;
-      max-width: 100svw !important;
-      min-height: 100svh !important;
-    }'
-  />
-*/

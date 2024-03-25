@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { useRef, type ReactElement } from 'react';
 import 'modern-normalize';
 import '@/App.styl';
 import 'non.geist';
@@ -8,16 +8,20 @@ import { Header } from '@/components/banners/Header.tsx';
 import { Editor } from '@/features/Editor.tsx';
 import { Preview } from '@/features/Preview.tsx';
 
-export const App = (): ReactElement => (
-  <>
-    <Header />
-    <div id='primary-container'>
-      <Editor />
-      <Preview />
-    </div>
-    <Footer />
-  </>
-);
+export const App = (): ReactElement => {
+  const printRef = useRef<HTMLElement | null>(null);
+
+  return (
+    <>
+      <Header />
+      <div id='primary-container'>
+        <Editor printRef={printRef} />
+        <Preview printRef={printRef} />
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 // Easter Egg
 console.log(

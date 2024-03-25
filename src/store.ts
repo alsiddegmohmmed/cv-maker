@@ -18,22 +18,35 @@ import {
   type ProjectState,
   createProjectSlice
 } from '@/slices/projectSlice.ts';
+import { type SkillState, createSkillSlice } from '@/slices/skillSlice.ts';
 
-export const useStore = create<
+const useSliceReset = new Set<() => void>();
+
+const useResetStore = (): void => {
+  useSliceReset.forEach(resetSlice => {
+    resetSlice();
+  });
+};
+
+const useStore = create<
   PersonState &
     ExperienceState &
     EducationState &
-    CertificationState &
-    ProjectState
+    SkillState &
+    ProjectState &
+    CertificationState
 >()(
   persist(
     (...a) => ({
       ...createPersonSlice(...a),
       ...createExperienceSlice(...a),
       ...createEducationSlice(...a),
-      ...createCertificationSlice(...a),
-      ...createProjectSlice(...a)
+      ...createSkillSlice(...a),
+      ...createProjectSlice(...a),
+      ...createCertificationSlice(...a)
     }),
     { name: 'store' }
   )
 );
+
+export { useResetStore, useSliceReset, useStore };
