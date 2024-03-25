@@ -77,9 +77,9 @@ export const EditorEducation = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         {educations.length > 0 && (
-          <div className='Education-list'>
+          <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
@@ -95,7 +95,7 @@ export const EditorEducation = (): ReactElement => {
           </div>
         )}
 
-        <div id='editor-education'>
+        <div className='two-column'>
           <span>
             <label htmlFor='college'>College</label>
             <input
@@ -125,7 +125,7 @@ export const EditorEducation = (): ReactElement => {
           </span>
         </div>
 
-        <div id='editor-education-date'>
+        <div className='three-column'>
           <span>
             <label htmlFor='degree'>Degree</label>
             <input
@@ -170,7 +170,7 @@ export const EditorEducation = (): ReactElement => {
         </div>
 
         <button
-          className='add-button'
+          className='add-btn'
           type='button'
           onClick={handleAddEducation}
           disabled={isDisabled}>

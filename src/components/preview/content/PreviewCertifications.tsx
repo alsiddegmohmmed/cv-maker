@@ -8,7 +8,7 @@ export const PreviewCertifications = (): ReactElement => {
   const hasCertifications = certifications.length > 0;
 
   return (
-    <div id='certifications' className='content'>
+    <div className='content simple'>
       {hasCertifications && <h1>CERTIFICATIONS</h1>}
 
       <ul>

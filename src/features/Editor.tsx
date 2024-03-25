@@ -13,7 +13,7 @@ export const Editor = ({
 }: {
   printRef: React.RefObject<HTMLElement>;
 }): ReactElement => (
-  <section>
+  <section id='editor'>
     <form noValidate>
       <EditorPersonal />
       <EditorExperience />

@@ -91,9 +91,9 @@ export const EditorExperience = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         {experiences.length > 0 && (
-          <div className='experience-list'>
+          <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
@@ -109,7 +109,7 @@ export const EditorExperience = (): ReactElement => {
           </div>
         )}
 
-        <div id='editor-experience'>
+        <div className='two-column'>
           <span>
             <label htmlFor='employer'>Employer</label>
             <input
@@ -139,7 +139,7 @@ export const EditorExperience = (): ReactElement => {
           </span>
         </div>
 
-        <div id='editor-experience-date'>
+        <div className='three-column'>
           <span>
             <label htmlFor='location'>Location</label>
             <input
@@ -198,7 +198,7 @@ export const EditorExperience = (): ReactElement => {
         </span>
 
         <button
-          className='add-button'
+          className='add-btn'
           type='button'
           onClick={handleAddExperience}
           disabled={isDisabled}>

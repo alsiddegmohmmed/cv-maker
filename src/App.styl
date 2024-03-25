@@ -1,30 +1,35 @@
-link = #ff03
-radius = 0.25rem
-fg-main = #1e293b // tw-slate-800
-bg-main = #f1f5f9 // tw-slate-100
-bg-field = #f8fafc // tw-slate-50
-fg-tap = #1e293b80
-bg-tap = #f1f5f980
-border-color = #64748b80 // tw-slate-500
-font-main = 'Geist Variable'
-shadow-link = 0 2px 10px link
-border-fg = 2px solid fg-main
-shadow-main = 0 0 1px 0 fg-tap
-outline = 2px solid transparent
-transition = 150ms cubic-bezier(0.4, 0, 0.2, 1)
+main-bg = #f1f5f9 // tw-slate-100
+main-fg = #1e293b // tw-slate-800
+field-bg = #f8fafc // tw-slate-50
+highlight = #64748b80 // tw-slate-500
+main-reset = #be123c // tw-rose-700
+hover-reset = #9f1239 // tw-rose-800
+main-download = #0f766e // tw-teal-700
+hover-download = #115e59 // tw-teal-800
+preview-link = #ff03
+preview-fg = black
+preview-bg = white
+tap-fg = #1e293b80
+tap-bg = #f1f5f980
+main-font = 'Geist Variable'
+main-shadow = 0 0 1px 0 tap-fg
+link-shadow = 0 2px 10px preview-link
+edge-style = 2px solid
+border-curve = 0.25rem
+transition-config = 150ms cubic-bezier(0.4, 0, 0.2, 1)
 
 :root
-  color fg-main
+  color main-fg
   min-height 100%
-  background bg-main
-  accent-color bg-main
+  background main-bg
+  accent-color main-bg
   scrollbar-width thin
   scroll-behavior smooth
-  font-family font-main, sans-serif
+  font-family main-font, sans-serif
 
-  --size-preview 1rem
+  --preview-size 1rem
 
-  #primary-container
+  #primary
     gap 1rem
     display flex
     align-items center
@@ -36,11 +41,11 @@ transition = 150ms cubic-bezier(0.4, 0, 0.2, 1)
       align-items flex-start
 
   @media (max-width 52.25rem)
-    --size-preview calc(100svw / 52.25)
+    --preview-size calc(100svw / 52.25)
 
-::selection
-  color bg-main
-  background fg-main
+  ::selection
+    color main-bg
+    background main-fg
 
 // stylelint-disable-next-line import-notation, no-invalid-position-at-import-rule
 @import 'styles/**/*.styl'

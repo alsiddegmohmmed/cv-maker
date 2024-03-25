@@ -8,7 +8,7 @@ export const PreviewProjects = (): ReactElement => {
   const hasProjects = projects.length > 0;
 
   return (
-    <div id='projects' className='content'>
+    <div className='content complex'>
       {hasProjects && <h1>PROJECTS</h1>}
 
       {projects.map(project => (

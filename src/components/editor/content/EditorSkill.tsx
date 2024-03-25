@@ -19,7 +19,7 @@ export const EditorSkill = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <span>
           <label htmlFor='progLang'>Programming Languages</label>
           <input

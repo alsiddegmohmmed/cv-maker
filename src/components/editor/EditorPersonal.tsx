@@ -31,8 +31,8 @@ export const EditorPersonal = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
-        <div id='editor-personal'>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
+        <div className='two-column'>
           <span>
             <label htmlFor='name'>Full Name</label>
             <input
@@ -89,7 +89,7 @@ export const EditorPersonal = (): ReactElement => {
           </span>
         </div>
 
-        <div id='editor-personal-links'>
+        <div className='three-column'>
           <span>
             <label htmlFor='Portfolio'>
               Portfolio <FontAwesomeIcon size='sm' icon={faLink} />

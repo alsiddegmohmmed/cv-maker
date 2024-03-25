@@ -76,9 +76,9 @@ export const EditorCertification = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         {certifications.length > 0 && (
-          <div className='certification-list'>
+          <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
@@ -113,7 +113,7 @@ export const EditorCertification = (): ReactElement => {
           </span>
         </div>
 
-        <div id='editor-certification-issuer'>
+        <div className='two-column'>
           <span>
             <label htmlFor='issuer'>Issuer</label>
             <input
@@ -146,7 +146,7 @@ export const EditorCertification = (): ReactElement => {
         </div>
 
         <button
-          className='add-button'
+          className='add-btn'
           type='button'
           onClick={handleAddCertification}
           disabled={isDisabled}>

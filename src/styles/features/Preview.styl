@@ -1,18 +1,18 @@
 #preview
-  color black
   margin 0 0.5rem
   overflow-y auto
   max-width 95svw
-  background white
+  color preview-fg
   scrollbar-width thin
-  box-shadow shadow-main
-  width calc(var(--size-preview) * 49.625)
-  min-height calc(var(--size-preview) * 70)
-  max-height calc(var(--size-preview) * 70)
-  padding calc(var(--size-preview) * 1.4375) calc(var(--size-preview) * 2.9375)
+  background preview-bg
+  box-shadow main-shadow
+  width calc(var(--preview-size) * 49.625)
+  min-height calc(var(--preview-size) * 70)
+  max-height calc(var(--preview-size) * 70)
+  padding calc(var(--preview-size) * 1.4375) calc(var(--preview-size) * 2.9375)
 
   .content
-    margin var(--size-preview) 0
+    margin var(--preview-size) 0
 
   h1
   h2
@@ -27,21 +27,21 @@
   h1
     line-height 1
     font-weight 500
-    font-size calc(var(--size-preview) * 1.5)
+    font-size calc(var(--preview-size) * 1.5)
 
   ul
-    padding-left calc(var(--size-preview) * 2.5)
+    padding-left calc(var(--preview-size) * 2.5)
 
   a
     color inherit
     text-decoration none
-    border-radius radius
-    -webkit-tap-highlight-color bg-tap
+    border-radius border-curve
+    -webkit-tap-highlight-color tap-bg
 
     &:focus-visible
-      outline border-fg
+      outline edge-style main-fg
 
     @media (hover hover)
       &:hover
-        background link
-        box-shadow shadow-link
+        box-shadow link-shadow
+        background preview-link

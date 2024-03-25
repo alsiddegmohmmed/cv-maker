@@ -84,9 +84,9 @@ export const EditorProjects = (): ReactElement => {
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
-      <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
+      <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         {projects.length > 0 && (
-          <div className='project-list'>
+          <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
@@ -102,7 +102,7 @@ export const EditorProjects = (): ReactElement => {
           </div>
         )}
 
-        <div id='editor-project'>
+        <div className='two-column'>
           <span>
             <label htmlFor='name'>Name</label>
             <input
@@ -165,7 +165,7 @@ export const EditorProjects = (): ReactElement => {
         </span>
 
         <button
-          className='add-button'
+          className='add-btn'
           type='button'
           onClick={handleAddProject}
           disabled={isDisabled}>

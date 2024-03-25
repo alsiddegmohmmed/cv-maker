@@ -18,10 +18,7 @@ export const DrawerButton = ({
   };
 
   return (
-    <button
-      type='button'
-      className='editor-accordion'
-      onClick={toggleVisibility}>
+    <button type='button' className='editor-menu' onClick={toggleVisibility}>
       <h1>{section}</h1>
       <div className={isVisible ? 'open' : ''}>
         <FontAwesomeIcon size='lg' icon={faChevronDown} />

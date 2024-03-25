@@ -34,7 +34,7 @@ export const CertificationItem = ({
   return (
     <div
       id={id}
-      className={`${isDragging ? 'dragging' : ''} certification-item`}
+      className={`${isDragging ? 'dragging' : ''} list-item`}
       ref={setNodeRef}
       style={style}>
       <span>

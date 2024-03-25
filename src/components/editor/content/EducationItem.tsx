@@ -34,7 +34,7 @@ export const EducationItem = ({
   return (
     <div
       id={id}
-      className={`${isDragging ? 'dragging' : ''} education-item`}
+      className={`${isDragging ? 'dragging' : ''} list-item`}
       ref={setNodeRef}
       style={style}>
       <span>

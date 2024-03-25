@@ -17,7 +17,7 @@ export const PreviewSkills = (): ReactElement => {
   );
 
   return (
-    <div id='skills' className='content'>
+    <div className='content simple'>
       {hasSkills && <h1>SKILLS</h1>}
 
       {Object.entries(skills).map(([set, skill]: [string, string]) => (

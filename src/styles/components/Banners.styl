@@ -8,12 +8,12 @@ footer
   a
     color inherit
     position relative
-    border-radius radius
     text-decoration none
-    -webkit-tap-highlight-color bg-tap
+    border-radius border-curve
+    -webkit-tap-highlight-color tap-bg
 
     &:focus-visible
-      outline border-fg
+      outline edge-style main-fg
 
     &::before
       left 0
@@ -23,11 +23,11 @@ footer
       height 0.125rem
       bottom -0.25rem
       position absolute
-      background fg-main
+      background main-fg
       transform scaleX(0)
-      border-radius radius
+      border-radius border-curve
       transform-origin bottom right
-      transition transform transition
+      transition transform transition-config
 
     @media (hover hover)
       &:hover::before

@@ -34,7 +34,7 @@ export const ProjectItem = ({
   return (
     <div
       id={id}
-      className={`${isDragging ? 'dragging' : ''} project-item`}
+      className={`${isDragging ? 'dragging' : ''} list-item`}
       ref={setNodeRef}
       style={style}>
       <span>

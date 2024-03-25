@@ -15,19 +15,20 @@ export const Actions = ({
       <button
         type='button'
         id='reset-btn'
-        className='editor-action'
+        className='action-btn'
         onClick={useResetStore}>
         <FontAwesomeIcon icon={faRotate} /> Reset
       </button>
       <ReactToPrint
         trigger={() => (
-          <button type='button' id='download-btn' className='editor-action'>
+          <button type='button' id='download-btn' className='action-btn'>
             <FontAwesomeIcon icon={faCircleDown} /> Download
           </button>
         )}
         content={() => printRef.current}
         documentTitle='Eldar Pashazade CV'
         pageStyle='main {
+            margin: 0 !important;
             width: 100% !important;
             box-shadow: none !important;
             max-height: none !important;

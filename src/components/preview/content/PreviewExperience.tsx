@@ -8,7 +8,7 @@ export const PreviewExperience = (): ReactElement => {
   const hasExperiences = experiences.length > 0;
 
   return (
-    <div id='experience' className='content'>
+    <div className='content complex'>
       {hasExperiences && <h1>EXPERIENCE</h1>}
 
       {experiences.map(experience => (

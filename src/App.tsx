@@ -14,7 +14,7 @@ export const App = (): ReactElement => {
   return (
     <>
       <Header />
-      <div id='primary-container'>
+      <div id='primary'>
         <Editor printRef={printRef} />
         <Preview printRef={printRef} />
       </div>

@@ -34,7 +34,7 @@ export const ExperienceItem = ({
   return (
     <div
       id={id}
-      className={`${isDragging ? 'dragging' : ''} experience-item`}
+      className={`${isDragging ? 'dragging' : ''} list-item`}
       ref={setNodeRef}
       style={style}>
       <span>

@@ -1,38 +1,38 @@
-section
-  color bg-field
+#editor
+  color field-bg
   margin 0 0.5rem
   max-width 95svw
   width 49.625rem
-  background fg-main
+  background main-fg
   padding 0.75rem 1rem
-  border-radius radius
-  box-shadow shadow-main
+  box-shadow main-shadow
+  border-radius border-curve
 
   input
   textarea
     resize none
-    color black
-    outline outline
+    color preview-fg
     min-height 1.5rem
     background white
-    border border-fg
-    caret-color fg-main
-    border-radius radius
+    caret-color main-fg
     padding 0.375rem 0.5rem
-    transition border-color transition
+    border-radius border-curve
+    border edge-style transparent
+    outline edge-style transparent
+    transition border-color transition-config
 
-  @media (hover hover)
-    input:hover
-    textarea:hover
-      outline outline
-      border-color border-color
+    @media (hover hover)
+      &:hover
+      &:hover
+        border-color highlight
+        outline edge-style transparent
 
-  input:focus
-  textarea:focus
-    outline outline
-    border-color border-color
+    &:focus
+    &:focus
+      border-color highlight
+      outline edge-style transparent
 
-  .editor-section-container
+  .editor-section
     gap 0.75rem
     display flex
     overflow-y auto
@@ -41,10 +41,35 @@ section
     scrollbar-width none
     margin-bottom 0.5rem
     flex-direction column
-    transition transition
+    transition transition-config
     transition-property max-height, margin-top
 
-    &.hide
+    .add-btn
+      border 0
+      height 3rem
+      margin 0 1px
+      color main-fg
+      cursor pointer
+      font-size 1.25rem
+      background preview-bg
+      border-radius border-curve
+      transition transition-config
+      -webkit-tap-highlight-color tap-fg
+      transition-property color, outline, background
+
+      &:focus-visible
+        outline edge-style highlight
+
+      &:disabled
+        color field-bg
+        cursor not-allowed
+        background transparent
+
+      @media (hover hover)
+        &:hover:not(:disabled)
+          background main-bg
+
+    &.closed
       max-height 0
       margin-top 0
 
@@ -57,34 +82,33 @@ section
       gap 0.375rem
       flex-direction column
 
-  .editor-accordion
+  .editor-menu
     display flex
     min-width 100%
-    color bg-field
-    border outline
+    color field-bg
     cursor pointer
     padding 0.25rem 0
     align-items center
-    border-radius radius
-    transition transition
     background transparent
+    border-radius border-curve
+    transition transition-config
+    border edge-style transparent
     justify-content space-between
-    transition-property border-color, background
+    transition-property outline, background
 
     &:focus-visible
-      outline-style solid
-      outline-color border-color
+      outline edge-style highlight
 
     @media (hover hover)
       &:hover
-        background border-color
+        background highlight
 
     div
       padding 0.625rem
-      color bg-field
-      border-radius radius
+      color field-bg
       background transparent
-      transition transform transition
+      border-radius border-curve
+      transition transform transition-config
 
       &.open
         transform rotate(180deg)
@@ -94,35 +118,9 @@ section
     user-select none
 
     &::selection
-      color fg-main
-      background bg-main
+      color main-fg
+      background main-bg
 
   h1
     margin 0
     font-weight 500
-
-.add-button
-  border 0
-  height 3rem
-  margin 0 1px
-  color fg-main
-  cursor pointer
-  font-size 1.25rem
-  background white
-  border-radius radius
-  transition transition
-  -webkit-tap-highlight-color fg-tap
-  transition-property color, border-color, background
-
-  &:focus-visible
-    outline-style solid
-    outline-color border-color
-
-  &:disabled
-    color bg-field
-    cursor not-allowed
-    background transparent
-
-  @media (hover hover)
-    &:hover:not(:disabled)
-      background bg-main

@@ -8,7 +8,7 @@ export const PreviewEducation = (): ReactElement => {
   const hasEducations = educations.length > 0;
 
   return (
-    <div id='education' className='content'>
+    <div className='content complex'>
       {hasEducations && <h1>EDUCATION</h1>}
 
       {educations.map(education => (
