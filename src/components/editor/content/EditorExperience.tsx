@@ -17,8 +17,10 @@ import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EditorExperience = (): ReactElement => {
-  const { experiences, addExperience, sortExperiences } = useStore();
-  const [isVisible, setIsVisible] = useState(false);
+  const section = 'Experience';
+  const { experiences, addExperience, sortExperiences, openMenus } = useStore();
+  const isVisible = openMenus.includes(section);
+
   const [experienceObj, setExperienceObj] = useState<ExperienceDetails>({
     id: '',
     employer: '',
@@ -87,11 +89,7 @@ export const EditorExperience = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Experience'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {experiences.length > 0 && (

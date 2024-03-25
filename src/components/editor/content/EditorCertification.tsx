@@ -19,8 +19,11 @@ import { type CertificationDetails } from '@/slices/certificationSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EditorCertification = (): ReactElement => {
-  const { certifications, addCertification, sortCertifications } = useStore();
-  const [isVisible, setIsVisible] = useState(false);
+  const section = 'Certifications';
+  const { certifications, addCertification, sortCertifications, openMenus } =
+    useStore();
+  const isVisible = openMenus.includes(section);
+
   const [certificationObj, setCertificationObj] =
     useState<CertificationDetails>({
       id: '',
@@ -71,11 +74,7 @@ export const EditorCertification = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Certifications'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {certifications.length > 0 && (

@@ -1,18 +1,20 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type Dispatch, type ReactElement, type SetStateAction } from 'react';
+import { type ReactElement } from 'react';
+
+import { useStore } from '@/store.ts';
 
 export const DrawerButton = ({
   section,
-  isVisible,
-  setIsVisible
+  isVisible
 }: {
   section: string;
   isVisible: boolean;
-  setIsVisible: Dispatch<SetStateAction<boolean>>;
 }): ReactElement => {
+  const { toggleMenu } = useStore();
+
   const toggleVisibility = (): void => {
-    setIsVisible(prev => !prev);
+    toggleMenu(section);
   };
 
   return (

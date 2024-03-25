@@ -1,13 +1,14 @@
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, type ChangeEvent, type ReactElement } from 'react';
+import { type ChangeEvent, type ReactElement } from 'react';
 
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
 export const EditorPersonal = (): ReactElement => {
-  const [isVisible, setIsVisible] = useState(true);
-  const { person, setPerson } = useStore();
+  const section = 'Personal Info';
+  const { person, setPerson, openMenus } = useStore();
+  const isVisible = openMenus.includes(section);
 
   const handlePersonInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setPerson({
@@ -28,11 +29,7 @@ export const EditorPersonal = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Personal Info'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         <div id='editor-personal'>

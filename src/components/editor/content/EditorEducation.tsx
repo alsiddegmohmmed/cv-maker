@@ -17,8 +17,10 @@ import { type EducationDetails } from '@/slices/educationSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EditorEducation = (): ReactElement => {
-  const { educations, addEducation, sortEducations } = useStore();
-  const [isVisible, setIsVisible] = useState(false);
+  const section = 'Education';
+  const { educations, addEducation, sortEducations, openMenus } = useStore();
+  const isVisible = openMenus.includes(section);
+
   const [educationObj, setEducationObj] = useState<EducationDetails>({
     id: '',
     college: '',
@@ -73,11 +75,7 @@ export const EditorEducation = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Education'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {educations.length > 0 && (

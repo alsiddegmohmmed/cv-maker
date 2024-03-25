@@ -13,6 +13,7 @@ import {
   type ExperienceState,
   createExperienceSlice
 } from '@/slices/experienceSlice.ts';
+import { type MenuState, createMenuSlice } from '@/slices/menuSlice.ts';
 import { type PersonState, createPersonSlice } from '@/slices/personSlice.ts';
 import {
   type ProjectState,
@@ -34,7 +35,8 @@ const useStore = create<
     EducationState &
     SkillState &
     ProjectState &
-    CertificationState
+    CertificationState &
+    MenuState
 >()(
   persist(
     (...a) => ({
@@ -43,7 +45,8 @@ const useStore = create<
       ...createEducationSlice(...a),
       ...createSkillSlice(...a),
       ...createProjectSlice(...a),
-      ...createCertificationSlice(...a)
+      ...createCertificationSlice(...a),
+      ...createMenuSlice(...a)
     }),
     { name: 'store' }
   )

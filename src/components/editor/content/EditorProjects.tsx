@@ -19,8 +19,10 @@ import { type ProjectDetails } from '@/slices/projectSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EditorProjects = (): ReactElement => {
-  const { projects, addProject, sortProjects } = useStore();
-  const [isVisible, setIsVisible] = useState(false);
+  const section = 'Projects';
+  const { projects, addProject, sortProjects, openMenus } = useStore();
+  const isVisible = openMenus.includes(section);
+
   const [projectObj, setProjectObj] = useState<ProjectDetails>({
     id: '',
     name: '',
@@ -80,11 +82,7 @@ export const EditorProjects = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Projects'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {projects.length > 0 && (

@@ -1,11 +1,12 @@
-import { useState, type ChangeEvent, type ReactElement } from 'react';
+import { type ChangeEvent, type ReactElement } from 'react';
 
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
 export const EditorSkill = (): ReactElement => {
-  const [isVisible, setIsVisible] = useState(false);
-  const { skills, setSkill } = useStore();
+  const section = 'Skills';
+  const { skills, setSkill, openMenus } = useStore();
+  const isVisible = openMenus.includes(section);
 
   const handleSkillInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setSkill({
@@ -16,11 +17,7 @@ export const EditorSkill = (): ReactElement => {
 
   return (
     <>
-      <DrawerButton
-        section='Skills'
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         <span>
