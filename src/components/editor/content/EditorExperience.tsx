@@ -12,7 +12,7 @@ import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
-import { ExperienceList } from '@/components/editor/content/ExperienceList.tsx';
+import { ExperienceItem } from '@/components/editor/content/ExperienceItem.tsx';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
 
@@ -53,13 +53,15 @@ export const EditorExperience = (): ReactElement => {
       .map(block => block.trim());
     setExperienceObj({
       ...experienceObj,
-      id: nanoid(),
       descriptions
     });
   };
 
   const handleAddExperience = (): void => {
-    addExperience(experienceObj);
+    addExperience({
+      ...experienceObj,
+      id: nanoid()
+    });
     setExperienceObj({
       id: '',
       employer: '',
@@ -103,7 +105,7 @@ export const EditorExperience = (): ReactElement => {
                 items={experiences}
                 strategy={verticalListSortingStrategy}>
                 {experiences.map(experience => (
-                  <ExperienceList key={experience.id} experience={experience} />
+                  <ExperienceItem key={experience.id} experience={experience} />
                 ))}
               </SortableContext>
             </DndContext>

@@ -1,37 +1,25 @@
 import { type ReactElement } from 'react';
 
+import { useStore } from '@/store.ts';
+
 export const PreviewCertifications = (): ReactElement => {
-  const CERTIFICATES = [
-    {
-      title: 'Front End Development Libraries',
-      link: 'https://freecodecamp.org/certification/eldarlrd/front-end-development-libraries',
-      issuer: 'freeCodeCamp'
-    },
-    {
-      title: 'JavaScript Algorithms and Data Structures',
-      link: 'https://freecodecamp.org/certification/eldarlrd/javascript-algorithms-and-data-structures',
-      issuer: 'freeCodeCamp'
-    },
-    {
-      title: 'Responsive Web Design',
-      link: 'https://freecodecamp.org/certification/eldarlrd/responsive-web-design',
-      issuer: 'freeCodeCamp'
-    }
-  ];
+  const { certifications } = useStore();
+
+  const hasCertifications = certifications.length > 0;
 
   return (
     <div id='certifications' className='content'>
-      <h1>CERTIFICATIONS</h1>
+      {hasCertifications && <h1>CERTIFICATIONS</h1>}
 
       <ul>
-        {CERTIFICATES.map(certificate => (
-          <li key={certificate.title + certificate.issuer}>
-            {certificate.title} -{' '}
+        {certifications.map(certification => (
+          <li key={certification.title + certification.issuer}>
+            {certification.title} -{' '}
             <a
-              title={certificate.link}
-              href={certificate.link}
+              title={certification.link}
+              href={certification.link}
               rel='noopener noreferrer nofollow'>
-              {certificate.issuer}
+              {certification.issuer}
             </a>
           </li>
         ))}
