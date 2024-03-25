@@ -1,27 +1,22 @@
-import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy
-} from '@dnd-kit/sortable';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
-import { CertificationItem } from '@/components/editor/content/CertificationItem.tsx';
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
+import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const ECertifications = (): ReactElement => {
   const section = 'Certifications';
-  const { certifications, addCertification, sortCertifications, openMenus } =
-    useStore();
+  const {
+    certifications,
+    sortCertifications,
+    addCertification,
+    removeCertification,
+    openMenus
+  } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [certificationObj, setCertificationObj] =
@@ -58,46 +53,19 @@ export const ECertifications = (): ReactElement => {
     });
   };
 
-  // Drag & Drop Sorting
-  const onDragEnd = (e: DragEndEvent): void => {
-    const { active, over } = e;
-    if (active.id !== over?.id) {
-      const prevIndex = certifications.findIndex(
-        certification => certification.id === active.id
-      );
-      const newIndex = certifications.findIndex(
-        certification => certification.id === over?.id
-      );
-      sortCertifications(arrayMove(certifications, prevIndex, newIndex));
-    }
-  };
-
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {certifications.length > 0 && (
-          <div className='dnd-list'>
-            <DndContext
-              onDragEnd={onDragEnd}
-              collisionDetection={closestCenter}
-              modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-              <SortableContext
-                items={certifications}
-                strategy={verticalListSortingStrategy}>
-                {certifications.map(certification => (
-                  <CertificationItem
-                    key={certification.id}
-                    certification={certification}
-                  />
-                ))}
-              </SortableContext>
-            </DndContext>
-          </div>
-        )}
+        <DndList
+          nameKey='title'
+          itemArr={certifications as ListProps[]}
+          handleSort={sortCertifications}
+          handleRemove={removeCertification}
+        />
 
-        <div id='editor-certification'>
+        <div>
           <span>
             <label htmlFor='title'>Title</label>
             <input
@@ -146,8 +114,8 @@ export const ECertifications = (): ReactElement => {
         </div>
 
         <button
-          className='add-btn'
           type='button'
+          className='add-btn'
           onClick={handleAddCertification}
           disabled={isDisabled}>
           Add

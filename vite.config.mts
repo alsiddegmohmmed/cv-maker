@@ -19,13 +19,5 @@ export default defineConfig({
         globPatterns: ['**/*.{html,css,js,png,woff2,webmanifest}']
       }
     })
-  ],
-  // https://vitest.dev/config
-  test: {
-    globals: true,
-    restoreMocks: true,
-    environment: 'jsdom',
-    include: ['__tests__/**/*.{test,spec}.{ts,tsx}'],
-    coverage: { all: true, include: ['src/**/*.{ts,tsx}'] }
-  }
+  ]
 });

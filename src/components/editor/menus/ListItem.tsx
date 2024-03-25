@@ -4,27 +4,22 @@ import { faGripVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'react';
 
-import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
-import { useStore } from '@/store.ts';
+import { type ListItemProps } from '@/components/editor/menus/DndList.tsx';
 
-export const ExperienceItem = ({
-  experience
+export const ListItem = ({
+  item,
+  handleRemove
 }: {
-  experience: ExperienceDetails;
+  item: ListItemProps;
+  handleRemove: () => void;
 }): ReactElement => {
-  const id = experience.id;
+  const id = item.id;
 
   // Drag & Drop Movement
   const { setNodeRef, listeners, transition, transform, isDragging } =
     useSortable({
       id
     });
-
-  const { removeExperience } = useStore();
-
-  const handleRemove = (): void => {
-    removeExperience(id);
-  };
 
   const style = {
     transition,
@@ -38,19 +33,16 @@ export const ExperienceItem = ({
       ref={setNodeRef}
       style={style}>
       <span>
-        <button
-          id='drag-btn'
-          title='Reorder Experience'
-          {...listeners}
-          type='button'>
+        <button id='drag-btn' title='Reorder' {...listeners} type='button'>
           <FontAwesomeIcon icon={faGripVertical} />
         </button>
-        <h1>{experience.employer}</h1>
+
+        <h1>{item.name}</h1>
       </span>
 
       <button
         id='trash-btn'
-        title='Remove Experience'
+        title='Remove'
         type='button'
         onClick={handleRemove}>
         <FontAwesomeIcon icon={faTrash} />

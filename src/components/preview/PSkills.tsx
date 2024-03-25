@@ -2,15 +2,15 @@ import { type ReactElement } from 'react';
 
 import { useStore } from '@/store.ts';
 
-export const PSkills = (): ReactElement => {
-  const { skills } = useStore();
+const SKILLSETS = {
+  progLang: 'Programming Languages',
+  libFrame: 'Libraries / Frameworks',
+  toolPlat: 'Tools / Platforms',
+  databases: 'Databases'
+};
 
-  const SKILLSETS = {
-    progLang: 'Programming Languages',
-    libFrame: 'Libraries / Frameworks',
-    toolPlat: 'Tools / Platforms',
-    databases: 'Databases'
-  };
+const PSkills = (): ReactElement => {
+  const { skills } = useStore();
 
   const hasSkills = Object.values(skills).some(
     skill => typeof skill === 'string' && skill.trim()
@@ -37,3 +37,5 @@ export const PSkills = (): ReactElement => {
     </div>
   );
 };
+
+export { SKILLSETS, PSkills };

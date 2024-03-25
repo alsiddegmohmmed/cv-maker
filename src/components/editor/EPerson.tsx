@@ -2,7 +2,7 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ChangeEvent, type ReactElement } from 'react';
 
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
 export const EPerson = (): ReactElement => {

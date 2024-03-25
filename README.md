@@ -13,7 +13,6 @@
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Font Awesome](https://fontawesome.com)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
-> - **[Vitest](https://vitest.dev)**
 > - **[Vite](https://vitejs.dev)**
 >
 > to allow quickly building a resume.
@@ -38,15 +37,6 @@ pnpm preview
 ### Format Code (ESLint + Stylelint + Prettier)
 ```sh
 pnpm format
-```
-## Test
-### Run Watch
-```sh
-pnpm test
-```
-### Coverage Report
-```sh
-pnpm cover
 ```
 ## Deploy
 ```sh

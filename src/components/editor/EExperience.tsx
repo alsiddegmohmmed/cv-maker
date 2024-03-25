@@ -1,24 +1,20 @@
-import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy
-} from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
-import { ExperienceItem } from '@/components/editor/content/ExperienceItem.tsx';
+import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EExperience = (): ReactElement => {
   const section = 'Experience';
-  const { experience, addExperience, sortExperience, openMenus } = useStore();
+  const {
+    experience,
+    sortExperience,
+    addExperience,
+    removeExperience,
+    openMenus
+  } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [experienceObj, setExperienceObj] = useState<ExperienceDetails>({
@@ -73,41 +69,17 @@ export const EExperience = (): ReactElement => {
     });
   };
 
-  // Drag & Drop Sorting
-  const onDragEnd = (e: DragEndEvent): void => {
-    const { active, over } = e;
-    if (active.id !== over?.id) {
-      const prevIndex = experience.findIndex(
-        experience => experience.id === active.id
-      );
-      const newIndex = experience.findIndex(
-        experience => experience.id === over?.id
-      );
-      sortExperience(arrayMove(experience, prevIndex, newIndex));
-    }
-  };
-
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {experience.length > 0 && (
-          <div className='dnd-list'>
-            <DndContext
-              onDragEnd={onDragEnd}
-              collisionDetection={closestCenter}
-              modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-              <SortableContext
-                items={experience}
-                strategy={verticalListSortingStrategy}>
-                {experience.map(experience => (
-                  <ExperienceItem key={experience.id} experience={experience} />
-                ))}
-              </SortableContext>
-            </DndContext>
-          </div>
-        )}
+        <DndList
+          nameKey='employer'
+          itemArr={experience as ListProps[]}
+          handleSort={sortExperience}
+          handleRemove={removeExperience}
+        />
 
         <div className='two-column'>
           <span>
@@ -198,8 +170,8 @@ export const EExperience = (): ReactElement => {
         </span>
 
         <button
-          className='add-btn'
           type='button'
+          className='add-btn'
           onClick={handleAddExperience}
           disabled={isDisabled}>
           Add

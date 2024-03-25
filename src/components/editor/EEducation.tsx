@@ -1,24 +1,15 @@
-import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy
-} from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
-import { EducationItem } from '@/components/editor/content/EducationItem.tsx';
+import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { type EducationDetails } from '@/slices/educationSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EEducation = (): ReactElement => {
   const section = 'Education';
-  const { education, addEducation, sortEducation, openMenus } = useStore();
+  const { education, sortEducation, addEducation, removeEducation, openMenus } =
+    useStore();
   const isVisible = openMenus.includes(section);
 
   const [educationObj, setEducationObj] = useState<EducationDetails>({
@@ -59,41 +50,17 @@ export const EEducation = (): ReactElement => {
     });
   };
 
-  // Drag & Drop Sorting
-  const onDragEnd = (e: DragEndEvent): void => {
-    const { active, over } = e;
-    if (active.id !== over?.id) {
-      const prevIndex = education.findIndex(
-        education => education.id === active.id
-      );
-      const newIndex = education.findIndex(
-        education => education.id === over?.id
-      );
-      sortEducation(arrayMove(education, prevIndex, newIndex));
-    }
-  };
-
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {education.length > 0 && (
-          <div className='dnd-list'>
-            <DndContext
-              onDragEnd={onDragEnd}
-              collisionDetection={closestCenter}
-              modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-              <SortableContext
-                items={education}
-                strategy={verticalListSortingStrategy}>
-                {education.map(education => (
-                  <EducationItem key={education.id} education={education} />
-                ))}
-              </SortableContext>
-            </DndContext>
-          </div>
-        )}
+        <DndList
+          nameKey='major'
+          itemArr={education as ListProps[]}
+          handleSort={sortEducation}
+          handleRemove={removeEducation}
+        />
 
         <div className='two-column'>
           <span>
@@ -170,8 +137,8 @@ export const EEducation = (): ReactElement => {
         </div>
 
         <button
-          className='add-btn'
           type='button'
+          className='add-btn'
           onClick={handleAddEducation}
           disabled={isDisabled}>
           Add

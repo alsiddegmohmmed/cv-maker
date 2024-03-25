@@ -1,6 +1,7 @@
 import { type ChangeEvent, type ReactElement } from 'react';
 
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
+import { SKILLSETS } from '@/components/preview/PSkills.tsx';
 import { useStore } from '@/store.ts';
 
 export const ESkills = (): ReactElement => {
@@ -20,61 +21,21 @@ export const ESkills = (): ReactElement => {
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        <span>
-          <label htmlFor='progLang'>Programming Languages</label>
-          <input
-            title=''
-            id='progLang'
-            type='text'
-            minLength={1}
-            maxLength={1024}
-            value={skills.progLang}
-            onInput={handleSkillInput}
-            autoCapitalize='words'
-          />
-        </span>
-
-        <span>
-          <label htmlFor='libFrame'>Libraries / Frameworks</label>
-          <input
-            title=''
-            id='libFrame'
-            type='text'
-            minLength={1}
-            maxLength={1024}
-            value={skills.libFrame}
-            onInput={handleSkillInput}
-            autoCapitalize='words'
-          />
-        </span>
-
-        <span>
-          <label htmlFor='toolPlat'>Tools / Platforms</label>
-          <input
-            title=''
-            id='toolPlat'
-            type='text'
-            minLength={1}
-            maxLength={1024}
-            value={skills.toolPlat}
-            onInput={handleSkillInput}
-            autoCapitalize='words'
-          />
-        </span>
-
-        <span>
-          <label htmlFor='databases'>Databases</label>
-          <input
-            title=''
-            id='databases'
-            type='text'
-            minLength={1}
-            maxLength={1024}
-            value={skills.databases}
-            onInput={handleSkillInput}
-            autoCapitalize='words'
-          />
-        </span>
+        {Object.entries(SKILLSETS).map(([id, set]) => (
+          <span key={id}>
+            <label htmlFor={id}>{set}</label>
+            <input
+              title=''
+              id={id}
+              type='text'
+              minLength={1}
+              maxLength={1024}
+              value={skills[id as keyof typeof SKILLSETS]}
+              onInput={handleSkillInput}
+              autoCapitalize='words'
+            />
+          </span>
+        ))}
       </div>
     </>
   );

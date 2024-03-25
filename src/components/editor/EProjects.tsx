@@ -1,26 +1,17 @@
-import { DndContext, type DragEndEvent, closestCenter } from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy
-} from '@dnd-kit/sortable';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { nanoid } from 'nanoid';
 import { useState, type ReactElement, type ChangeEvent } from 'react';
 
-import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
-import { ProjectItem } from '@/components/editor/content/ProjectItem.tsx';
+import { DndList, type ListProps } from '@/components/editor/menus/DndList.tsx';
+import { DrawerButton } from '@/components/editor/menus/DrawerButton.tsx';
 import { type ProjectDetails } from '@/slices/projectsSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const EProjects = (): ReactElement => {
   const section = 'Projects';
-  const { projects, addProject, sortProjects, openMenus } = useStore();
+  const { projects, sortProjects, addProject, removeProject, openMenus } =
+    useStore();
   const isVisible = openMenus.includes(section);
 
   const [projectObj, setProjectObj] = useState<ProjectDetails>({
@@ -70,37 +61,17 @@ export const EProjects = (): ReactElement => {
     });
   };
 
-  // Drag & Drop Sorting
-  const onDragEnd = (e: DragEndEvent): void => {
-    const { active, over } = e;
-    if (active.id !== over?.id) {
-      const prevIndex = projects.findIndex(project => project.id === active.id);
-      const newIndex = projects.findIndex(project => project.id === over?.id);
-      sortProjects(arrayMove(projects, prevIndex, newIndex));
-    }
-  };
-
   return (
     <>
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {projects.length > 0 && (
-          <div className='dnd-list'>
-            <DndContext
-              onDragEnd={onDragEnd}
-              collisionDetection={closestCenter}
-              modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-              <SortableContext
-                items={projects}
-                strategy={verticalListSortingStrategy}>
-                {projects.map(project => (
-                  <ProjectItem key={project.id} project={project} />
-                ))}
-              </SortableContext>
-            </DndContext>
-          </div>
-        )}
+        <DndList
+          nameKey='name'
+          itemArr={projects as ListProps[]}
+          handleSort={sortProjects}
+          handleRemove={removeProject}
+        />
 
         <div className='two-column'>
           <span>
@@ -165,8 +136,8 @@ export const EProjects = (): ReactElement => {
         </span>
 
         <button
-          className='add-btn'
           type='button'
+          className='add-btn'
           onClick={handleAddProject}
           disabled={isDisabled}>
           Add
