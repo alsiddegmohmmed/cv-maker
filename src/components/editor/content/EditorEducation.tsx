@@ -73,10 +73,11 @@ export const EditorEducation = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Education</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Education'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {educations.length > 0 && (

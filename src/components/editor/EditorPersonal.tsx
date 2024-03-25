@@ -28,10 +28,11 @@ export const EditorPersonal = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Personal Info</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Personal Info'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         <div id='editor-personal'>

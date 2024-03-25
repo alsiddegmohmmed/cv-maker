@@ -16,10 +16,11 @@ export const EditorSkill = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Skills</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Skills'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         <span>

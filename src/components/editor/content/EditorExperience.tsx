@@ -87,10 +87,11 @@ export const EditorExperience = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Experience</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Experience'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {experiences.length > 0 && (

@@ -80,10 +80,11 @@ export const EditorProjects = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Projects</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Projects'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {projects.length > 0 && (

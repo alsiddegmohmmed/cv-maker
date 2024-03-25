@@ -71,10 +71,11 @@ export const EditorCertification = (): ReactElement => {
 
   return (
     <>
-      <div className='editor-accordion'>
-        <h1>Certifications</h1>
-        <DrawerButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      </div>
+      <DrawerButton
+        section='Certifications'
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
 
       <div className={`${isVisible ? '' : 'hide'} editor-section-container`}>
         {certifications.length > 0 && (

@@ -1,11 +1,13 @@
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type Dispatch, type ReactElement, type SetStateAction } from 'react';
 
 export const DrawerButton = ({
+  section,
   isVisible,
   setIsVisible
 }: {
+  section: string;
   isVisible: boolean;
   setIsVisible: Dispatch<SetStateAction<boolean>>;
 }): ReactElement => {
@@ -15,13 +17,13 @@ export const DrawerButton = ({
 
   return (
     <button
-      aria-label={isVisible ? 'Close Section' : 'Open Section'}
       type='button'
+      className='editor-accordion'
       onClick={toggleVisibility}>
-      <FontAwesomeIcon
-        size='lg'
-        icon={isVisible ? faChevronUp : faChevronDown}
-      />
+      <h1>{section}</h1>
+      <div className={isVisible ? 'open' : ''}>
+        <FontAwesomeIcon size='lg' icon={faChevronDown} />
+      </div>
     </button>
   );
 };
