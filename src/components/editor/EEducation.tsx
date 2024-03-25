@@ -16,9 +16,9 @@ import { EducationItem } from '@/components/editor/content/EducationItem.tsx';
 import { type EducationDetails } from '@/slices/educationSlice.ts';
 import { useStore } from '@/store.ts';
 
-export const EditorEducation = (): ReactElement => {
+export const EEducation = (): ReactElement => {
   const section = 'Education';
-  const { educations, addEducation, sortEducations, openMenus } = useStore();
+  const { education, addEducation, sortEducation, openMenus } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [educationObj, setEducationObj] = useState<EducationDetails>({
@@ -63,13 +63,13 @@ export const EditorEducation = (): ReactElement => {
   const onDragEnd = (e: DragEndEvent): void => {
     const { active, over } = e;
     if (active.id !== over?.id) {
-      const prevIndex = educations.findIndex(
+      const prevIndex = education.findIndex(
         education => education.id === active.id
       );
-      const newIndex = educations.findIndex(
+      const newIndex = education.findIndex(
         education => education.id === over?.id
       );
-      sortEducations(arrayMove(educations, prevIndex, newIndex));
+      sortEducation(arrayMove(education, prevIndex, newIndex));
     }
   };
 
@@ -78,16 +78,16 @@ export const EditorEducation = (): ReactElement => {
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {educations.length > 0 && (
+        {education.length > 0 && (
           <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
               modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
               <SortableContext
-                items={educations}
+                items={education}
                 strategy={verticalListSortingStrategy}>
-                {educations.map(education => (
+                {education.map(education => (
                   <EducationItem key={education.id} education={education} />
                 ))}
               </SortableContext>

@@ -1,6 +1,7 @@
 import { type StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
+
 interface EducationDetails {
   id: string;
   college: string;
@@ -11,35 +12,34 @@ interface EducationDetails {
 }
 
 interface EducationState {
-  educations: EducationDetails[];
+  education: EducationDetails[];
+  sortEducation: (sortedEducation: EducationDetails[]) => void;
   addEducation: (newEducation: EducationDetails) => void;
   removeEducation: (id: string) => void;
-  sortEducations: (sortedEducations: EducationDetails[]) => void;
 }
 
-const initialEducations: EducationDetails[] = [];
+const initialEducation: EducationDetails[] = [];
 
 const createEducationSlice: StateCreator<EducationState> = set => (
   useSliceReset.add(() => {
-    set({ educations: initialEducations });
+    set({ education: initialEducation });
   }),
   {
-    educations: initialEducations,
+    education: initialEducation,
+    sortEducation: (sortedEducation: EducationDetails[]): void => {
+      set({ education: sortedEducation });
+    },
 
     addEducation: (newEducation: EducationDetails): void => {
       set(state => ({
-        educations: [...state.educations, newEducation]
+        education: [...state.education, newEducation]
       }));
     },
 
     removeEducation: (id: string): void => {
       set((state: EducationState) => ({
-        educations: state.educations.filter(edu => edu.id !== id)
+        education: state.education.filter(education => education.id !== id)
       }));
-    },
-
-    sortEducations: (sortedEducations: EducationDetails[]): void => {
-      set({ educations: sortedEducations });
     }
   }
 );

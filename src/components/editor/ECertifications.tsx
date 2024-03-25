@@ -15,10 +15,10 @@ import { useState, type ReactElement, type ChangeEvent } from 'react';
 
 import { CertificationItem } from '@/components/editor/content/CertificationItem.tsx';
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
-import { type CertificationDetails } from '@/slices/certificationSlice.ts';
+import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
 import { useStore } from '@/store.ts';
 
-export const EditorCertification = (): ReactElement => {
+export const ECertifications = (): ReactElement => {
   const section = 'Certifications';
   const { certifications, addCertification, sortCertifications, openMenus } =
     useStore();

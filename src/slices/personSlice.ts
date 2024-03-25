@@ -1,6 +1,7 @@
 import { type StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
+
 interface PersonLinks {
   Portfolio: string;
   GitHub: string;
@@ -17,7 +18,7 @@ interface PersonDetails {
 
 interface PersonState {
   person: PersonDetails;
-  setPerson: (person: Partial<PersonDetails>) => void;
+  setPerson: (updatedPerson: Partial<PersonDetails>) => void;
 }
 
 const initialPerson: PersonDetails = {
@@ -38,7 +39,6 @@ const createPersonSlice: StateCreator<PersonState> = set => (
   }),
   {
     person: { ...initialPerson },
-
     setPerson: (updatedPerson: Partial<PersonDetails>): void => {
       set({
         person: {

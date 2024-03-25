@@ -16,9 +16,9 @@ import { ExperienceItem } from '@/components/editor/content/ExperienceItem.tsx';
 import { type ExperienceDetails } from '@/slices/experienceSlice.ts';
 import { useStore } from '@/store.ts';
 
-export const EditorExperience = (): ReactElement => {
+export const EExperience = (): ReactElement => {
   const section = 'Experience';
-  const { experiences, addExperience, sortExperiences, openMenus } = useStore();
+  const { experience, addExperience, sortExperience, openMenus } = useStore();
   const isVisible = openMenus.includes(section);
 
   const [experienceObj, setExperienceObj] = useState<ExperienceDetails>({
@@ -77,13 +77,13 @@ export const EditorExperience = (): ReactElement => {
   const onDragEnd = (e: DragEndEvent): void => {
     const { active, over } = e;
     if (active.id !== over?.id) {
-      const prevIndex = experiences.findIndex(
+      const prevIndex = experience.findIndex(
         experience => experience.id === active.id
       );
-      const newIndex = experiences.findIndex(
+      const newIndex = experience.findIndex(
         experience => experience.id === over?.id
       );
-      sortExperiences(arrayMove(experiences, prevIndex, newIndex));
+      sortExperience(arrayMove(experience, prevIndex, newIndex));
     }
   };
 
@@ -92,16 +92,16 @@ export const EditorExperience = (): ReactElement => {
       <DrawerButton section={section} isVisible={isVisible} />
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
-        {experiences.length > 0 && (
+        {experience.length > 0 && (
           <div className='dnd-list'>
             <DndContext
               onDragEnd={onDragEnd}
               collisionDetection={closestCenter}
               modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
               <SortableContext
-                items={experiences}
+                items={experience}
                 strategy={verticalListSortingStrategy}>
-                {experiences.map(experience => (
+                {experience.map(experience => (
                   <ExperienceItem key={experience.id} experience={experience} />
                 ))}
               </SortableContext>

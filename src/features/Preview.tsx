@@ -1,11 +1,11 @@
 import { type ReactElement } from 'react';
 
-import { PreviewPersonal } from '@/components/preview/PreviewPersonal.tsx';
-import { PreviewCertifications } from '@/components/preview/content/PreviewCertifications.tsx';
-import { PreviewEducation } from '@/components/preview/content/PreviewEducation.tsx';
-import { PreviewExperience } from '@/components/preview/content/PreviewExperience.tsx';
-import { PreviewProjects } from '@/components/preview/content/PreviewProjects.tsx';
-import { PreviewSkills } from '@/components/preview/content/PreviewSkills.tsx';
+import { PCertifications } from '@/components/preview/PCertifications.tsx';
+import { PEducation } from '@/components/preview/PEducation.tsx';
+import { PExperience } from '@/components/preview/PExperience.tsx';
+import { PPerson } from '@/components/preview/PPerson.tsx';
+import { PProjects } from '@/components/preview/PProjects.tsx';
+import { PSkills } from '@/components/preview/PSkills.tsx';
 
 export const Preview = ({
   printRef
@@ -13,11 +13,11 @@ export const Preview = ({
   printRef: React.RefObject<HTMLElement>;
 }): ReactElement => (
   <main id='preview' ref={printRef}>
-    <PreviewPersonal />
-    <PreviewExperience />
-    <PreviewEducation />
-    <PreviewSkills />
-    <PreviewProjects />
-    <PreviewCertifications />
+    <PPerson />
+    <PExperience />
+    <PEducation />
+    <PSkills />
+    <PProjects />
+    <PCertifications />
   </main>
 );

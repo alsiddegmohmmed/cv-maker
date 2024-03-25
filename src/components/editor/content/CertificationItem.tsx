@@ -4,7 +4,7 @@ import { faGripVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'react';
 
-import { type CertificationDetails } from '@/slices/certificationSlice.ts';
+import { type CertificationDetails } from '@/slices/certificationsSlice.ts';
 import { useStore } from '@/store.ts';
 
 export const CertificationItem = ({

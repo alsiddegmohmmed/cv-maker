@@ -5,7 +5,7 @@ import { type ChangeEvent, type ReactElement } from 'react';
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
-export const EditorPersonal = (): ReactElement => {
+export const EPerson = (): ReactElement => {
   const section = 'Personal Info';
   const { person, setPerson, openMenus } = useStore();
   const isVisible = openMenus.includes(section);

@@ -2,9 +2,9 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import {
-  type CertificationState,
-  createCertificationSlice
-} from '@/slices/certificationSlice.ts';
+  type CertificationsState,
+  createCertificationsSlice
+} from '@/slices/certificationsSlice.ts';
 import {
   type EducationState,
   createEducationSlice
@@ -13,13 +13,16 @@ import {
   type ExperienceState,
   createExperienceSlice
 } from '@/slices/experienceSlice.ts';
-import { type MenuState, createMenuSlice } from '@/slices/menuSlice.ts';
+import {
+  type OpenMenusState,
+  createOpenMenusSlice
+} from '@/slices/openMenusSlice.ts';
 import { type PersonState, createPersonSlice } from '@/slices/personSlice.ts';
 import {
-  type ProjectState,
-  createProjectSlice
-} from '@/slices/projectSlice.ts';
-import { type SkillState, createSkillSlice } from '@/slices/skillSlice.ts';
+  type ProjectsState,
+  createProjectsSlice
+} from '@/slices/projectsSlice.ts';
+import { type SkillsState, createSkillsSlice } from '@/slices/skillsSlice.ts';
 
 const useSliceReset = new Set<() => void>();
 
@@ -29,24 +32,25 @@ const useResetStore = (): void => {
   });
 };
 
-const useStore = create<
-  PersonState &
-    ExperienceState &
-    EducationState &
-    SkillState &
-    ProjectState &
-    CertificationState &
-    MenuState
->()(
+interface StoreState
+  extends PersonState,
+    ExperienceState,
+    EducationState,
+    SkillsState,
+    ProjectsState,
+    CertificationsState,
+    OpenMenusState {}
+
+const useStore = create<StoreState>()(
   persist(
     (...a) => ({
       ...createPersonSlice(...a),
       ...createExperienceSlice(...a),
       ...createEducationSlice(...a),
-      ...createSkillSlice(...a),
-      ...createProjectSlice(...a),
-      ...createCertificationSlice(...a),
-      ...createMenuSlice(...a)
+      ...createSkillsSlice(...a),
+      ...createProjectsSlice(...a),
+      ...createCertificationsSlice(...a),
+      ...createOpenMenusSlice(...a)
     }),
     { name: 'store' }
   )

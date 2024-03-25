@@ -1,12 +1,12 @@
 import { type ReactElement } from 'react';
 
 import { Actions } from '@/components/Actions.tsx';
-import { EditorPersonal } from '@/components/editor/EditorPersonal.tsx';
-import { EditorCertification } from '@/components/editor/content/EditorCertification.tsx';
-import { EditorEducation } from '@/components/editor/content/EditorEducation.tsx';
-import { EditorExperience } from '@/components/editor/content/EditorExperience.tsx';
-import { EditorProjects } from '@/components/editor/content/EditorProjects.tsx';
-import { EditorSkill } from '@/components/editor/content/EditorSkill.tsx';
+import { ECertifications } from '@/components/editor/ECertifications.tsx';
+import { EEducation } from '@/components/editor/EEducation.tsx';
+import { EExperience } from '@/components/editor/EExperience.tsx';
+import { EPerson } from '@/components/editor/EPerson.tsx';
+import { EProjects } from '@/components/editor/EProjects.tsx';
+import { ESkills } from '@/components/editor/ESkills.tsx';
 
 export const Editor = ({
   printRef
@@ -15,12 +15,12 @@ export const Editor = ({
 }): ReactElement => (
   <section id='editor'>
     <form noValidate>
-      <EditorPersonal />
-      <EditorExperience />
-      <EditorEducation />
-      <EditorSkill />
-      <EditorProjects />
-      <EditorCertification />
+      <EPerson />
+      <EExperience />
+      <EEducation />
+      <ESkills />
+      <EProjects />
+      <ECertifications />
       <Actions printRef={printRef} />
     </form>
   </section>

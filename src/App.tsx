@@ -1,4 +1,4 @@
-import { useRef, type ReactElement } from 'react';
+import { type ReactElement, useRef } from 'react';
 import 'modern-normalize';
 import '@/App.styl';
 import 'non.geist';

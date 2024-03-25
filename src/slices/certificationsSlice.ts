@@ -1,6 +1,7 @@
 import { type StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
+
 interface CertificationDetails {
   id: string;
   title: string;
@@ -8,21 +9,26 @@ interface CertificationDetails {
   link: string;
 }
 
-interface CertificationState {
+interface CertificationsState {
   certifications: CertificationDetails[];
+  sortCertifications: (sortedCertifications: CertificationDetails[]) => void;
   addCertification: (newCertification: CertificationDetails) => void;
   removeCertification: (id: string) => void;
-  sortCertifications: (sortedCertifications: CertificationDetails[]) => void;
 }
 
 const initialCertifications: CertificationDetails[] = [];
 
-const createCertificationSlice: StateCreator<CertificationState> = set => (
+const createCertificationsSlice: StateCreator<CertificationsState> = set => (
   useSliceReset.add(() => {
     set({ certifications: initialCertifications });
   }),
   {
     certifications: initialCertifications,
+    sortCertifications: (
+      sortedCertifications: CertificationDetails[]
+    ): void => {
+      set({ certifications: sortedCertifications });
+    },
 
     addCertification: (newCertification: CertificationDetails): void => {
       set(state => ({
@@ -31,21 +37,17 @@ const createCertificationSlice: StateCreator<CertificationState> = set => (
     },
 
     removeCertification: (id: string): void => {
-      set((state: CertificationState) => ({
-        certifications: state.certifications.filter(edu => edu.id !== id)
+      set((state: CertificationsState) => ({
+        certifications: state.certifications.filter(
+          certification => certification.id !== id
+        )
       }));
-    },
-
-    sortCertifications: (
-      sortedCertifications: CertificationDetails[]
-    ): void => {
-      set({ certifications: sortedCertifications });
     }
   }
 );
 
 export {
   type CertificationDetails,
-  type CertificationState,
-  createCertificationSlice
+  type CertificationsState,
+  createCertificationsSlice
 };

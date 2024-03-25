@@ -3,7 +3,7 @@ import { type ChangeEvent, type ReactElement } from 'react';
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { useStore } from '@/store.ts';
 
-export const EditorSkill = (): ReactElement => {
+export const ESkills = (): ReactElement => {
   const section = 'Skills';
   const { skills, setSkill, openMenus } = useStore();
   const isVisible = openMenus.includes(section);

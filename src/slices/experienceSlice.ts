@@ -1,6 +1,7 @@
 import { type StateCreator } from 'zustand';
 
 import { useSliceReset } from '@/store.ts';
+
 interface ExperienceDetails {
   id: string;
   employer: string;
@@ -12,35 +13,34 @@ interface ExperienceDetails {
 }
 
 interface ExperienceState {
-  experiences: ExperienceDetails[];
+  experience: ExperienceDetails[];
+  sortExperience: (sortedExperience: ExperienceDetails[]) => void;
   addExperience: (newExperience: ExperienceDetails) => void;
   removeExperience: (id: string) => void;
-  sortExperiences: (sortedExperiences: ExperienceDetails[]) => void;
 }
 
-const initialExperiences: ExperienceDetails[] = [];
+const initialExperience: ExperienceDetails[] = [];
 
 const createExperienceSlice: StateCreator<ExperienceState> = set => (
   useSliceReset.add(() => {
-    set({ experiences: initialExperiences });
+    set({ experience: initialExperience });
   }),
   {
-    experiences: initialExperiences,
+    experience: initialExperience,
+    sortExperience: (sortedExperience: ExperienceDetails[]): void => {
+      set({ experience: sortedExperience });
+    },
 
     addExperience: (newExperience: ExperienceDetails): void => {
       set(state => ({
-        experiences: [...state.experiences, newExperience]
+        experience: [...state.experience, newExperience]
       }));
     },
 
     removeExperience: (id: string): void => {
       set((state: ExperienceState) => ({
-        experiences: state.experiences.filter(exp => exp.id !== id)
+        experience: state.experience.filter(experience => experience.id !== id)
       }));
-    },
-
-    sortExperiences: (sortedExperiences: ExperienceDetails[]): void => {
-      set({ experiences: sortedExperiences });
     }
   }
 );

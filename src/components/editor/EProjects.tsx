@@ -15,10 +15,10 @@ import { useState, type ReactElement, type ChangeEvent } from 'react';
 
 import { DrawerButton } from '@/components/editor/content/DrawerButton.tsx';
 import { ProjectItem } from '@/components/editor/content/ProjectItem.tsx';
-import { type ProjectDetails } from '@/slices/projectSlice.ts';
+import { type ProjectDetails } from '@/slices/projectsSlice.ts';
 import { useStore } from '@/store.ts';
 
-export const EditorProjects = (): ReactElement => {
+export const EProjects = (): ReactElement => {
   const section = 'Projects';
   const { projects, addProject, sortProjects, openMenus } = useStore();
   const isVisible = openMenus.includes(section);
