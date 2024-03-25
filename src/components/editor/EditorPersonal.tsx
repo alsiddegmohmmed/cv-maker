@@ -12,7 +12,7 @@ export const EditorPersonal = (): ReactElement => {
   const handlePersonInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setPerson({
       ...person,
-      [e.target.id]: e.target.value.trim()
+      [e.target.id]: e.target.value
     });
   };
 
@@ -21,7 +21,7 @@ export const EditorPersonal = (): ReactElement => {
       ...person,
       links: {
         ...person.links,
-        [e.target.id]: e.target.value.trim()
+        [e.target.id]: e.target.value
       }
     });
   };

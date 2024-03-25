@@ -14,16 +14,25 @@ import {
   createExperienceSlice
 } from '@/slices/experienceSlice.ts';
 import { type PersonState, createPersonSlice } from '@/slices/personSlice.ts';
+import {
+  type ProjectState,
+  createProjectSlice
+} from '@/slices/projectSlice.ts';
 
 export const useStore = create<
-  PersonState & ExperienceState & EducationState & CertificationState
+  PersonState &
+    ExperienceState &
+    EducationState &
+    CertificationState &
+    ProjectState
 >()(
   persist(
     (...a) => ({
       ...createPersonSlice(...a),
       ...createExperienceSlice(...a),
       ...createEducationSlice(...a),
-      ...createCertificationSlice(...a)
+      ...createCertificationSlice(...a),
+      ...createProjectSlice(...a)
     }),
     { name: 'store' }
   )

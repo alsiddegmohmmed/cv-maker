@@ -38,7 +38,7 @@ export const EditorEducation = (): ReactElement => {
     const { id, value } = e.target;
     setEducationObj(prevObj => ({
       ...prevObj,
-      [id]: value.trim()
+      [id]: value
     }));
   };
 

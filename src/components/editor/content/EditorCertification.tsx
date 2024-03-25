@@ -38,7 +38,7 @@ export const EditorCertification = (): ReactElement => {
     const { id, value } = e.target;
     setCertificationObj(prevObj => ({
       ...prevObj,
-      [id]: value.trim()
+      [id]: value
     }));
   };
 

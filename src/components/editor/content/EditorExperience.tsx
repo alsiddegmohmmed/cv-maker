@@ -41,16 +41,14 @@ export const EditorExperience = (): ReactElement => {
     const { id, value } = e.target;
     setExperienceObj(prevObj => ({
       ...prevObj,
-      [id]: value.trim()
+      [id]: value
     }));
   };
 
   const handleDescriptionsInput = (
     e: ChangeEvent<HTMLTextAreaElement>
   ): void => {
-    const descriptions = e.target.value
-      .split('\n\n')
-      .map(block => block.trim());
+    const descriptions = e.target.value.split('\n\n').map(block => block);
     setExperienceObj({
       ...experienceObj,
       descriptions
