@@ -17,10 +17,10 @@ export const PProjects = (): ReactElement => {
             <div key={project.id}>
               <span>
                 <h2>
-                  {project.name} |{' '}
+                  {project.projName} |{' '}
                   <a
-                    href={project.link}
-                    title={project.link}
+                    href={project.projLink}
+                    title={project.projLink}
                     rel='noopener noreferrer nofollow'>
                     Link
                   </a>
@@ -30,8 +30,8 @@ export const PProjects = (): ReactElement => {
               </span>
 
               <ul>
-                {project.descriptions.map(description => (
-                  <li key={description}>{description.trim()}</li>
+                {project.projDescriptions.map(projDescription => (
+                  <li key={projDescription}>{projDescription.trim()}</li>
                 ))}
               </ul>
             </div>

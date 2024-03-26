@@ -22,13 +22,13 @@ export const ECertifications = (): ReactElement => {
   const [certificationObj, setCertificationObj] =
     useState<CertificationDetails>({
       id: '',
-      title: '',
+      certTitle: '',
       issuer: '',
       link: ''
     });
 
   const isDisabled =
-    !certificationObj.title ||
+    !certificationObj.certTitle ||
     !certificationObj.link ||
     !certificationObj.issuer;
 
@@ -47,7 +47,7 @@ export const ECertifications = (): ReactElement => {
     });
     setCertificationObj({
       id: '',
-      title: '',
+      certTitle: '',
       issuer: '',
       link: ''
     });
@@ -59,7 +59,7 @@ export const ECertifications = (): ReactElement => {
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <DndList
-          nameKey='title'
+          nameKey='certTitle'
           itemArr={certifications as ListProps[]}
           handleSort={sortCertifications}
           handleRemove={removeCertification}
@@ -67,14 +67,14 @@ export const ECertifications = (): ReactElement => {
 
         <div>
           <span>
-            <label htmlFor='title'>Title</label>
+            <label htmlFor='certTitle'>Title</label>
             <input
               title=''
               type='text'
-              id='title'
+              id='certTitle'
               minLength={1}
               maxLength={128}
-              value={certificationObj.title}
+              value={certificationObj.certTitle}
               onInput={handleCertificationInput}
               autoCapitalize='words'
             />

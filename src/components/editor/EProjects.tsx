@@ -16,18 +16,18 @@ export const EProjects = (): ReactElement => {
 
   const [projectObj, setProjectObj] = useState<ProjectDetails>({
     id: '',
-    name: '',
-    link: '',
+    projName: '',
+    projLink: '',
     stack: '',
-    descriptions: []
+    projDescriptions: []
   });
 
   const isDisabled =
-    !projectObj.name ||
-    !projectObj.link ||
+    !projectObj.projName ||
+    !projectObj.projLink ||
     !projectObj.stack ||
-    !(projectObj.descriptions.length > 0) ||
-    projectObj.descriptions.some(desc => desc.trim() === '');
+    !(projectObj.projDescriptions.length > 0) ||
+    projectObj.projDescriptions.some(desc => desc.trim() === '');
 
   const handleProjectInput = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
@@ -37,13 +37,13 @@ export const EProjects = (): ReactElement => {
     }));
   };
 
-  const handleDescriptionsInput = (
+  const handleProjDescriptionsInput = (
     e: ChangeEvent<HTMLTextAreaElement>
   ): void => {
-    const descriptions = e.target.value.split('\n\n').map(block => block);
+    const projDescriptions = e.target.value.split('\n\n').map(block => block);
     setProjectObj({
       ...projectObj,
-      descriptions
+      projDescriptions
     });
   };
 
@@ -54,10 +54,10 @@ export const EProjects = (): ReactElement => {
     });
     setProjectObj({
       id: '',
-      name: '',
-      link: '',
+      projName: '',
+      projLink: '',
       stack: '',
-      descriptions: []
+      projDescriptions: []
     });
   };
 
@@ -67,7 +67,7 @@ export const EProjects = (): ReactElement => {
 
       <div className={`${isVisible ? '' : 'closed'} editor-section`}>
         <DndList
-          nameKey='name'
+          nameKey='projName'
           itemArr={projects as ListProps[]}
           handleSort={sortProjects}
           handleRemove={removeProject}
@@ -75,30 +75,31 @@ export const EProjects = (): ReactElement => {
 
         <div className='two-column'>
           <span>
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='projName'>Name</label>
             <input
               title=''
               type='text'
-              id='name'
+              id='projName'
               minLength={1}
               maxLength={128}
-              value={projectObj.name}
+              value={projectObj.projName}
               onInput={handleProjectInput}
               autoCapitalize='words'
+              autoComplete='on'
             />
           </span>
 
           <span>
-            <label htmlFor='link'>
+            <label htmlFor='projLink'>
               Link <FontAwesomeIcon size='sm' icon={faLink} />
             </label>
             <input
               title=''
               type='text'
-              id='link'
+              id='projLink'
               minLength={1}
               maxLength={128}
-              value={projectObj.link}
+              value={projectObj.projLink}
               onInput={handleProjectInput}
               autoCapitalize='words'
             />
@@ -122,16 +123,16 @@ export const EProjects = (): ReactElement => {
         </div>
 
         <span>
-          <label htmlFor='descriptions'>Description</label>
+          <label htmlFor='projDescriptions'>Description</label>
           <textarea
             title=''
             rows={6}
             minLength={1}
             maxLength={4000}
-            id='descriptions'
+            id='projDescriptions'
             spellCheck={false}
-            value={projectObj.descriptions.join('\n\n')}
-            onInput={handleDescriptionsInput}
+            value={projectObj.projDescriptions.join('\n\n')}
+            onInput={handleProjDescriptionsInput}
           />
         </span>
 

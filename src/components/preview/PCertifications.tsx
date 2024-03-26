@@ -16,7 +16,7 @@ export const PCertifications = (): ReactElement => {
           <ul>
             {certifications.map(certification => (
               <li key={certification.id}>
-                {certification.title} -{' '}
+                {certification.certTitle} -{' '}
                 <a
                   title={certification.link}
                   href={certification.link}

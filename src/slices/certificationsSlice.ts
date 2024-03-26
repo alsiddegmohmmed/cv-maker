@@ -4,7 +4,7 @@ import { useSliceReset } from '@/store.ts';
 
 interface CertificationDetails {
   id: string;
-  title: string;
+  certTitle: string;
   issuer: string;
   link: string;
 }

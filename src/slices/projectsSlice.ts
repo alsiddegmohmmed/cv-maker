@@ -4,10 +4,10 @@ import { useSliceReset } from '@/store.ts';
 
 interface ProjectDetails {
   id: string;
-  name: string;
-  link: string;
+  projName: string;
+  projLink: string;
   stack: string;
-  descriptions: string[];
+  projDescriptions: string[];
 }
 
 interface ProjectsState {

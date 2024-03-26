@@ -44,6 +44,7 @@ export const EPerson = (): ReactElement => {
               value={person.name}
               onInput={handlePersonInput}
               autoCapitalize='words'
+              autoComplete='on'
             />
           </span>
 
@@ -71,6 +72,7 @@ export const EPerson = (): ReactElement => {
               maxLength={128}
               value={person.email}
               onInput={handlePersonInput}
+              autoComplete='on'
             />
           </span>
 
@@ -85,6 +87,7 @@ export const EPerson = (): ReactElement => {
               value={person.phone}
               onInput={handlePersonInput}
               pattern='^(\+?\d{1,3}\s?)?(\(\d{2,3}\)|\d{2,3})[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$'
+              autoComplete='on'
             />
           </span>
         </div>
